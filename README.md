@@ -15,7 +15,7 @@ It provides:
 
 **In the browser**
 
-```javascript
+```html
 <script src="https://unpkg.com/mapbox-gl-indoorequal@latest/dist/mapbox-gl-indoorequal.umd.min.js"></script>
 ```
 
@@ -55,6 +55,16 @@ Update the displayed level.
 ##### Parameters
 
 - `level`: **required** a string with the level to display
+
+## Develop
+
+### Run tests
+
+    yarn test
+
+### Build a new version
+
+    yarn build
 
 ## License
 
