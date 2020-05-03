@@ -255,7 +255,7 @@ class IndoorEqual {
     }
 
     this.$el = document.createElement('div');
-    this.$el.classList.add('mapboxgl-ctrl', 'mapboxgl-ctrl-group');
+    this.$el.classList.add('mapboxgl-ctrl', 'mapboxgl-ctrl-group', 'mapboxgl-ctrl-indoorequal');
   }
 
   on(name, fn) {
@@ -320,7 +320,9 @@ class IndoorEqual {
     }
     const buttons = this.levels.map((level) => {
       const button = document.createElement('button');
-      button.textContent = level;
+      const strong = document.createElement('strong');
+      strong.textContent = level;
+      button.appendChild(strong);
       if (level == this.level) {
         button.classList.add('mapboxgl-ctrl-active');
       }
