@@ -249,9 +249,9 @@ class IndoorEqual {
     this.events = {};
 
     if (this.map.loaded()) {
-      this.addSource();
+      this._addSource();
     } else {
-      this.map.on('load', this.addSource.bind(this));
+      this.map.on('load', this._addSource.bind(this));
     }
 
     this.$el = document.createElement('div');
@@ -265,7 +265,29 @@ class IndoorEqual {
     this.events[name].push(fn);
   }
 
-  addSource() {
+  off(name, fn) {
+    if (!this.events[name]) {
+      this.events[name] = [];
+    }
+    this.events[name] = this.events[name].filter(cb => cb !== fn);
+  }
+
+  onAdd() {
+    return this.$el;
+  }
+
+  onRemove() {
+    this.$el.remove();
+  }
+
+  updateLevel(level) {
+    this.level = level;
+    this._updateFilters();
+    this._refreshControl();
+    this._emitLevelChange();
+  }
+
+  _addSource() {
     this.map.addSource(SOURCE_ID, {
       type: 'vector',
       url: this.url
@@ -282,21 +304,6 @@ class IndoorEqual {
     this.map.on('load', updateLevels);
     this.map.on('data', updateLevels);
     this.map.on('move', updateLevels);
-  }
-
-  onAdd() {
-    return this.$el;
-  }
-
-  onRemove() {
-    this.$el.remove();
-  }
-
-  updateLevel(level) {
-    this.level = level;
-    this._updateFilters();
-    this._refreshControl();
-    this._emitLevelChange();
   }
 
   _updateFilters() {
