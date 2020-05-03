@@ -8,6 +8,10 @@ mapbobx-gl-indoorequal is a mapbox-gl.js plugin to display indoor data from [ind
 
     npm install --save mapbox-gl-indoorequal
 
+**In the browser**
+
+    <script src="https://unpkg.com/mapbox-gl-indoorequal@latest/dist/mapbox-gl-indoorequal.umd.min.js"></script>
+
 ## Example
 
     const mapboxgl = require('mapbox-gl');
