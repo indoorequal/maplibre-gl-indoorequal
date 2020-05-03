@@ -255,6 +255,13 @@ export default class IndoorEqual {
     this.events[name].push(fn);
   }
 
+  off(name, fn) {
+    if (!this.events[name]) {
+      this.events[name] = [];
+    }
+    this.events[name] = this.events[name].filter(cb => cb !== fn);
+  }
+
   onAdd() {
     return this.$el;
   }

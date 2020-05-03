@@ -149,4 +149,20 @@ describe('IndoorEqual', () => {
     indoorEqual._refreshAfterLevelsUpdate();
     expect(indoorEqual.level).toEqual('0');
   });
+
+  it('allows to remove an event listener', () => {
+    const indoorEqual = new IndoorEqual(map);
+    indoorEqual.levels = ['1', '0'];
+    indoorEqual._refreshAfterLevelsUpdate();
+    let levelChangeCalled = 0;
+    const cb = (level) => {
+      levelChangeCalled++;
+    };
+    indoorEqual.on('levelchange', cb);
+    indoorEqual.updateLevel('1');
+    expect(levelChangeCalled).toEqual(1);
+    indoorEqual.off('levelchange', cb)
+    indoorEqual.updateLevel('0');
+    expect(levelChangeCalled).toEqual(1);
+  });
 });
