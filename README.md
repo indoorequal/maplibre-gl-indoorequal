@@ -60,6 +60,28 @@ Update the displayed level.
 
 - `level`: **required** a string with the level to display
 
+#### on
+
+Listen events emitted by the plugin
+
+##### Parameters
+
+- `name`: **required** the event name
+- `callback`: **required** the function to be called when the event is emitted
+
+#### off
+
+Remove an event listener.
+
+##### Parameters
+
+- `name`: **required** the event name
+- `callback`: **required** the function registered via `on`
+
+#### List of events
+
+- `levelchange`: always emitted when the level displayed has changed
+
 ## Develop
 
 ### Run tests
