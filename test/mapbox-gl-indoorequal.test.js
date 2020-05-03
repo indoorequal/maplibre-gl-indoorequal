@@ -53,6 +53,7 @@ describe('IndoorEqual', () => {
     expect(indoorEqual.$el).not.toBe(null);
     expect(indoorEqual.$el.classList.contains('mapboxgl-ctrl')).toBe(true);
     expect(indoorEqual.$el.classList.contains('mapboxgl-ctrl-group')).toBe(true);
+    expect(indoorEqual.$el.classList.contains('mapboxgl-ctrl-indoorequal')).toBe(true);
   });
 
   it('returns the container when calling onAdd', () => {

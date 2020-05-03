@@ -17,6 +17,7 @@ It provides:
 
 ```html
 <script src="https://unpkg.com/mapbox-gl-indoorequal@latest/dist/mapbox-gl-indoorequal.umd.min.js"></script>
+<link href="https://unpkg.com/mapbox-gl-indoorequal@latest/mapbox-gl-indoorequal.css" rel="stylesheet" />
 ```
 
 ## Example
@@ -24,6 +25,7 @@ It provides:
 ```javascript
 const mapboxgl = require('mapbox-gl');
 const IndoorEqual = require('mapbox-gl-indoorequal');
+require('mapbox-gl-indoorequal/'mapbox-gl-indoorequal.css');
 
 const map = new mapboxgl.Map({
     container: 'map',
