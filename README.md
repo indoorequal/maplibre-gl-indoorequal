@@ -27,7 +27,7 @@ It provides:
 ```javascript
 const mapboxgl = require('mapbox-gl');
 const IndoorEqual = require('mapbox-gl-indoorequal');
-require('mapbox-gl-indoorequal/'mapbox-gl-indoorequal.css');
+require('mapbox-gl-indoorequal/mapbox-gl-indoorequal.css');
 
 const map = new mapboxgl.Map({
     container: 'map',
