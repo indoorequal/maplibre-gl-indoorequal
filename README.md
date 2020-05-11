@@ -7,6 +7,8 @@ It provides:
 - a level control to change the level displayed on the map
 - a programatic API to change the level displayed
 
+[**See the demo**](https://indoorequal.github.io/mapbox-gl-indoorequal).
+
 ![](./demo.gif)
 
 ## Install
