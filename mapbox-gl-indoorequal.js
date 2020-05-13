@@ -235,6 +235,7 @@ const layers = [
  * @param {object} map the mapbox-gl instance of the map
  * @param {object} options
  * @param {url} [options.url] Override the default tiles URL (https://tiles.indoorequal.org/).
+ * @param {url} [options.apiKey] The API key if you use the default tile URL (get your free key at [indoorequal.com](https://indoorequal.com)).
  * @property {string} level The current level displayed
  * @property {array} levels  The levels that can be displayed in the current view
  * @fires IndoorEqual#levelschange
@@ -243,9 +244,14 @@ const layers = [
  */
 export default class IndoorEqual {
   constructor(map, options = {}) {
-    const opts = { url: 'https://tiles.indoorequal.org/',  ...options };
+    const defaultOpts = { url: 'https://tiles.indoorequal.org/' };
+    const opts = { ...defaultOpts, ...options };
+    if (opts.url === defaultOpts.url && !opts.apiKey) {
+      throw 'You must register your apiKey at https://indoorequal.com before and set it as apiKey param.';
+    }
     this.map = map;
     this.url = opts.url;
+    this.apiKey = opts.apiKey;
     this.levels = [];
     this.level = "0";
     this.events = {};
@@ -311,9 +317,10 @@ export default class IndoorEqual {
   }
 
   _addSource() {
+    const queryParams = this.apiKey ? `?key=${this.apiKey}` : '';
     this.map.addSource(SOURCE_ID, {
       type: 'vector',
-      url: this.url
+      url: `${this.url}${queryParams}`
     });
     layers.forEach((layer) => {
       this.map.addLayer({

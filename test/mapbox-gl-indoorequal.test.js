@@ -22,9 +22,9 @@ describe('IndoorEqual', () => {
 
   it('load the source and the layers when the map style is loaded', () => {
     map.isStyleLoaded = () => true;
-    const indoorEqual = new IndoorEqual(map);
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     expect(addSource.mock.calls.length).toEqual(1);
-    expect(addSource.mock.calls[0]).toEqual(['indoorequal', { type: 'vector', url: 'https://tiles.indoorequal.org/' }]);
+    expect(addSource.mock.calls[0]).toEqual(['indoorequal', { type: 'vector', url: 'https://tiles.indoorequal.org/?key=myapikey' }]);
     expect(addLayer.mock.calls.length).toEqual(9);
     expect(setFilter.mock.calls.length).toEqual(9);
   });
@@ -36,9 +36,15 @@ describe('IndoorEqual', () => {
     expect(addSource.mock.calls[0]).toEqual(['indoorequal', { type: 'vector', url: 'https://example.com' }]);
   });
 
+  it('raise an error when the apiKey is not provided', () => {
+    expect(() => {
+      const indoorEqual = new IndoorEqual(map);
+    }).toThrow('You must register your apiKey at https://indoorequal.com before and set it as apiKey param.');
+  });
+
   it('load the source and the layers once the map style is loaded', () => {
     map.isStyleLoaded = () => false;
-    const indoorEqual = new IndoorEqual(map);
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     expect(addSource.mock.calls.length).toEqual(0);
     expect(addLayer.mock.calls.length).toEqual(0);
     expect(setFilter.mock.calls.length).toEqual(0);
@@ -49,18 +55,18 @@ describe('IndoorEqual', () => {
   });
 
   it('returns the level control container when calling onAdd', () => {
-    const indoorEqual = new IndoorEqual(map);
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     expect(indoorEqual.onAdd().tagName).toBe('DIV');
   });
 
-  it('returns the level control container when calling onRemove', () => {
-    const indoorEqual = new IndoorEqual(map);
+  it('remove the level control container when calling onRemove', () => {
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     indoorEqual.onAdd();
     indoorEqual.onRemove();
   });
 
   it('dont query the layer when the layer is not loaded', () => {
-    const indoorEqual = new IndoorEqual(map);
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     expect(indoorEqual.levels).toEqual([]);
     map.isSourceLoaded = (source) => {
       expect(source).toEqual('indoorequal');
@@ -71,7 +77,7 @@ describe('IndoorEqual', () => {
   });
 
   it('query the layer when the layer is loaded', () => {
-    const indoorEqual = new IndoorEqual(map);
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     expect(indoorEqual.levels).toEqual([]);
     map.isSourceLoaded = (source) => {
       expect(source).toEqual('indoorequal');
@@ -98,7 +104,7 @@ describe('IndoorEqual', () => {
   });
 
   it('emit an event when the levels change', () => {
-    const indoorEqual = new IndoorEqual(map);
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     map.isSourceLoaded = () => true;
     map.querySourceFeatures = (source, filter) => {
       expect(source).toEqual('indoorequal');
@@ -126,7 +132,7 @@ describe('IndoorEqual', () => {
   });
 
   it('allow to set the current level', () => {
-    const indoorEqual = new IndoorEqual(map);
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     indoorEqual.levels = ['1', '0'];
     indoorEqual._refreshAfterLevelsUpdate();
     expect(indoorEqual.level).toEqual('0');
@@ -135,7 +141,7 @@ describe('IndoorEqual', () => {
   });
 
   it('emit an event when the level change', () => {
-    const indoorEqual = new IndoorEqual(map);
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     indoorEqual.levels = ['1', '0'];
     indoorEqual._refreshAfterLevelsUpdate();
     let levelChangeCalled = 0;
@@ -148,7 +154,7 @@ describe('IndoorEqual', () => {
   });
 
   it('reset the value to 0 if the current level doesnt exist', () => {
-    const indoorEqual = new IndoorEqual(map);
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     indoorEqual.levels = ['1', '0'];
     indoorEqual.updateLevel('1');
     indoorEqual._refreshAfterLevelsUpdate();
@@ -158,7 +164,7 @@ describe('IndoorEqual', () => {
   });
 
   it('allows to remove an event listener', () => {
-    const indoorEqual = new IndoorEqual(map);
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     indoorEqual.levels = ['1', '0'];
     indoorEqual._refreshAfterLevelsUpdate();
     let levelChangeCalled = 0;
