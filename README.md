@@ -32,10 +32,10 @@ const IndoorEqual = require('mapbox-gl-indoorequal');
 require('mapbox-gl-indoorequal/mapbox-gl-indoorequal.css');
 
 const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/traffic-night-v2',
-    center: [-77.0259, 38.9010],
-    zoom: 9
+  container: 'map',
+  style: 'mapbox://styles/mapbox/traffic-night-v2',
+  center: [2.3601072, 48.876853],
+  zoom: 18
 });
 
 const indoorEqual = new IndoorEqual(map);
