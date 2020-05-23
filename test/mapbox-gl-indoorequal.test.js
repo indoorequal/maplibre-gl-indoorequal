@@ -100,6 +100,34 @@ describe('IndoorEqual', () => {
     expect(indoorEqual.levels).toEqual(['1', '0']);
   });
 
+  it('emit an event when the levels change', () => {
+    const indoorEqual = new IndoorEqual(map);
+    map.isSourceLoaded = () => true;
+    map.querySourceFeatures = (source, filter) => {
+      expect(source).toEqual('indoorequal');
+      expect(filter).toEqual({ sourceLayer: 'area' });
+      return [
+        {
+          properties: {
+            level: "1"
+          }
+        },
+        {
+          properties: {
+            level: "0"
+          }
+        }
+      ];
+    };
+    let levelsChangeCalled = 0;
+    indoorEqual.on('levelschange', (levels) => {
+      expect(levels).toEqual(["1", "0"]);
+      levelsChangeCalled++;
+    });
+    indoorEqual._updateLevels();
+    expect(levelsChangeCalled).toEqual(1);
+  });
+
   it('render the levels as button', () => {
     const indoorEqual = new IndoorEqual(map);
     indoorEqual.levels = ['1', '0'];

@@ -82,6 +82,7 @@ Remove an event listener.
 
 #### List of events
 
+- `levelschange`: emitted when the list of available levels has been updated
 - `levelchange`: always emitted when the level displayed has changed
 
 ## Develop

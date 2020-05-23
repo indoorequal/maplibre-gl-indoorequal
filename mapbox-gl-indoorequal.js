@@ -334,12 +334,21 @@ export default class IndoorEqual {
       const levels = findAllLevels(features);
       if (!arrayEqual(levels, this.levels)) {
         this.levels = levels;
+        this._emitLevelsChange();
         this._refreshAfterLevelsUpdate();
       }
     }
   }
 
+  _emitLevelsChange() {
+    this._emitEvent('levelschange', this.levels);
+  }
+
   _emitLevelChange() {
-    (this.events['levelchange'] || []).forEach(fn => fn(this.level));
+    this._emitEvent('levelchange', this.level);
+  }
+
+  _emitEvent(eventName, ...args) {
+    (this.events[eventName] || []).forEach(fn => fn(...args));
   }
 }
