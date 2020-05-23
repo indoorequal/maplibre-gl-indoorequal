@@ -54,7 +54,7 @@ Load the indoor= source and layers in your map.
 - `options`: **optional** object to configure the plugin
   - `url`: the url of the tiles (default `https://tiles.indoorequal.org/`)
 
-#### updateLevel
+#### updateLevel(level)
 
 Update the displayed level.
 
@@ -62,7 +62,7 @@ Update the displayed level.
 
 - `level`: **required** a string with the level to display
 
-#### on
+#### on(eventName, callback)
 
 Listen events emitted by the plugin
 
@@ -71,7 +71,7 @@ Listen events emitted by the plugin
 - `name`: **required** the event name
 - `callback`: **required** the function to be called when the event is emitted
 
-#### off
+#### off(eventName, callback)
 
 Remove an event listener.
 
