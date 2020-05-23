@@ -73,7 +73,7 @@ Load the indoor= source and layers in your map.
 #### Properties
 
 -   `level` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The current level displayed
--   `levels` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** The levels that can displayed in the current view
+-   `levels` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** The levels that can be displayed in the current view
 
 Returns **[IndoorEqual](#indoorequal)** `this`
 

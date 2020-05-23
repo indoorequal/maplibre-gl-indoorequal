@@ -236,7 +236,7 @@ const layers = [
  * @param {object} options
  * @param {url} [options.url] Override the default tiles URL (https://tiles.indoorequal.org/).
  * @property {string} level The current level displayed
- * @property {array} levels  The levels that can displayed in the current view
+ * @property {array} levels  The levels that can be displayed in the current view
  * @return {IndoorEqual} `this`
  */
 export default class IndoorEqual {
