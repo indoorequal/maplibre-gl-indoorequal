@@ -12,6 +12,43 @@ function findAllLevels(features) {
   return levels.sort((a, b) => a - b).reverse();
 }
 
+class LevelControl {
+  constructor(indoorequal) {
+    this.indoorequal = indoorequal;
+    this._cbRefresh = () => this._refresh();
+    this.indoorequal.on('levelschange', this._cbRefresh);
+    this.indoorequal.on('levelchange', this._cbRefresh);
+
+    this.$el = document.createElement('div');
+    this.$el.classList.add('mapboxgl-ctrl', 'mapboxgl-ctrl-group', 'mapboxgl-ctrl-indoorequal');
+    this._refresh();
+  }
+
+  destroy() {
+    this.$el.remove();
+    this.indoorequal.off('levelschange', this._cbRefresh);
+    this.indoorequal.off('levelchange', this._cbRefresh);
+  }
+
+  _refresh() {
+    this.$el.innerHTML = '';
+    if (this.indoorequal.levels.length === 1) {
+      return;
+    }
+    const buttons = this.indoorequal.levels.map((level) => {
+      const button = document.createElement('button');
+      const strong = document.createElement('strong');
+      strong.textContent = level;
+      button.appendChild(strong);
+      if (level == this.indoorequal.level) {
+        button.classList.add('mapboxgl-ctrl-active');
+      }
+      button.addEventListener('click', () => {  this.indoorequal.updateLevel(level); });
+      this.$el.appendChild(button);
+    });
+  }
+}
+
 const SOURCE_ID = 'indoorequal';
 const commonPoi = {
   "type": "symbol",
@@ -239,6 +276,17 @@ const layers = [
   }
 ];
 
+/**
+ * Load the indoor= source and layers in your map.
+ * @param {object} map the mapbox-gl instance of the map
+ * @param {object} options
+ * @param {url} [options.url] Override the default tiles URL (https://tiles.indoorequal.org/).
+ * @property {string} level The current level displayed
+ * @property {array} levels  The levels that can be displayed in the current view
+ * @fires IndoorEqual#levelschange
+ * @fires IndoorEqual#levelchange
+ * @return {IndoorEqual} `this`
+ */
 class IndoorEqual {
   constructor(map, options = {}) {
     const opts = { url: 'https://tiles.indoorequal.org/',  ...options };
@@ -253,11 +301,13 @@ class IndoorEqual {
     } else {
       this.map.on('load', this._addSource.bind(this));
     }
-
-    this.$el = document.createElement('div');
-    this.$el.classList.add('mapboxgl-ctrl', 'mapboxgl-ctrl-group', 'mapboxgl-ctrl-indoorequal');
   }
 
+  /**
+   * Add an event listener
+   * @param {string} name the name of the event
+   * @param {function} fn the function to be called when the event is emitted
+   */
   on(name, fn) {
     if (!this.events[name]) {
       this.events[name] = [];
@@ -265,6 +315,11 @@ class IndoorEqual {
     this.events[name].push(fn);
   }
 
+  /**
+   * Remove an event listener.
+   * @param {string} name the name of the event
+   * @param {function} fn the same function when on() was called
+   */
   off(name, fn) {
     if (!this.events[name]) {
       this.events[name] = [];
@@ -272,18 +327,32 @@ class IndoorEqual {
     this.events[name] = this.events[name].filter(cb => cb !== fn);
   }
 
+  /**
+   * Add the level control to the map
+   * Used when adding the control via the map instance: map.addControl(indoorEqual)
+   */
   onAdd() {
-    return this.$el;
+    this._control = new LevelControl(this);
+    return this._control.$el;
   }
 
+  /**
+   * Remove the level control
+   * Used when removing the control via the map instance: map.removeControl(indoorEqual)
+   */
   onRemove() {
-    this.$el.remove();
+    this._control.destroy();
+    this._control = null;
   }
 
+  /**
+   * Update the displayed level.
+   * @param {string} level the level to be displayed
+   * @fires IndoorEqual#levelchange
+   */
   updateLevel(level) {
     this.level = level;
     this._updateFilters();
-    this._refreshControl();
     this._emitLevelChange();
   }
 
@@ -317,25 +386,6 @@ class IndoorEqual {
       this.level = '0';
       this._emitLevelChange();
     }
-    this._refreshControl();
-  }
-
-  _refreshControl() {
-    this.$el.innerHTML = '';
-    if (this.levels.length === 1) {
-      return;
-    }
-    const buttons = this.levels.map((level) => {
-      const button = document.createElement('button');
-      const strong = document.createElement('strong');
-      strong.textContent = level;
-      button.appendChild(strong);
-      if (level == this.level) {
-        button.classList.add('mapboxgl-ctrl-active');
-      }
-      button.addEventListener('click', () => {  this.updateLevel(level); });
-      this.$el.appendChild(button);
-    });
   }
 
   _updateLevels() {
@@ -344,14 +394,37 @@ class IndoorEqual {
       const levels = findAllLevels(features);
       if (!arrayEqual(levels, this.levels)) {
         this.levels = levels;
+        this._emitLevelsChange();
         this._refreshAfterLevelsUpdate();
       }
     }
   }
 
+  _emitLevelsChange() {
+    this._emitEvent('levelschange', this.levels);
+  }
+
   _emitLevelChange() {
-    (this.events['levelchange'] || []).forEach(fn => fn(this.level));
+    this._emitEvent('levelchange', this.level);
+  }
+
+  _emitEvent(eventName, ...args) {
+    (this.events[eventName] || []).forEach(fn => fn(...args));
   }
 }
+
+/**
+ * Emitted when the list of available levels has been updated
+ *
+ * @event IndoorEqual#levelschange
+ * @type {array}
+ */
+
+/**
+ * Emitted when the list of available levels has been updated
+ *
+ * @event IndoorEqual#levelchange
+ * @type {string} always emitted when the level displayed has changed
+ */
 
 export default IndoorEqual;
