@@ -237,6 +237,8 @@ const layers = [
  * @param {url} [options.url] Override the default tiles URL (https://tiles.indoorequal.org/).
  * @property {string} level The current level displayed
  * @property {array} levels  The levels that can be displayed in the current view
+ * @fires IndoorEqual#levelschange
+ * @fires IndoorEqual#levelchange
  * @return {IndoorEqual} `this`
  */
 export default class IndoorEqual {
@@ -300,6 +302,7 @@ export default class IndoorEqual {
   /**
    * Update the displayed level.
    * @param {string} level the level to be displayed
+   * @fires IndoorEqual#levelchange
    */
   updateLevel(level) {
     this.level = level;
@@ -363,3 +366,17 @@ export default class IndoorEqual {
     (this.events[eventName] || []).forEach(fn => fn(...args));
   }
 }
+
+/**
+ * Emitted when the list of available levels has been updated
+ *
+ * @event IndoorEqual#levelschange
+ * @type {array}
+ */
+
+/**
+ * Emitted when the list of available levels has been updated
+ *
+ * @event IndoorEqual#levelchange
+ * @type {string} always emitted when the level displayed has changed
+ */

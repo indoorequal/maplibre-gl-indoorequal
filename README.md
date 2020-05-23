@@ -59,6 +59,8 @@ map.addControl(indoorEqual);
     -   [onRemove](#onremove)
     -   [updateLevel](#updatelevel)
         -   [Parameters](#parameters-3)
+-   [IndoorEqual#levelschange](#indoorequallevelschange)
+-   [IndoorEqual#levelchange](#indoorequallevelchange)
 
 ### IndoorEqual
 
@@ -112,6 +114,18 @@ Update the displayed level.
 ##### Parameters
 
 -   `level` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the level to be displayed
+
+### IndoorEqual#levelschange
+
+Emitted when the list of available levels has been updated
+
+Type: [array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+### IndoorEqual#levelchange
+
+Emitted when the list of available levels has been updated
+
+Type: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)
 
 ## Develop
 
