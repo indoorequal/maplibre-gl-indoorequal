@@ -230,6 +230,15 @@ const layers = [
   }
 ];
 
+/**
+ * Load the indoor= source and layers in your map.
+ * @param {object} map the mapbox-gl instance of the map
+ * @param {object} options
+ * @param {url} [options.url] Override the default tiles URL (https://tiles.indoorequal.org/).
+ * @property {string} level The current level displayed
+ * @property {array} levels  The levels that can displayed in the current view
+ * @return {IndoorEqual} `this`
+ */
 export default class IndoorEqual {
   constructor(map, options = {}) {
     const opts = { url: 'https://tiles.indoorequal.org/',  ...options };
@@ -246,6 +255,11 @@ export default class IndoorEqual {
     }
   }
 
+  /**
+   * Add an event listener
+   * @param {string} name the name of the event
+   * @param {function} fn the function to be called when the event is emitted
+   */
   on(name, fn) {
     if (!this.events[name]) {
       this.events[name] = [];
@@ -253,6 +267,11 @@ export default class IndoorEqual {
     this.events[name].push(fn);
   }
 
+  /**
+   * Remove an event listener.
+   * @param {string} name the name of the event
+   * @param {function} fn the same function when on() was called
+   */
   off(name, fn) {
     if (!this.events[name]) {
       this.events[name] = [];
@@ -260,16 +279,28 @@ export default class IndoorEqual {
     this.events[name] = this.events[name].filter(cb => cb !== fn);
   }
 
+  /**
+   * Add the level control to the map
+   * Used when adding the control via the map instance: map.addControl(indoorEqual)
+   */
   onAdd() {
     this._control = new LevelControl(this);
     return this._control.$el;
   }
 
+  /**
+   * Remove the level control
+   * Used when removing the control via the map instance: map.removeControl(indoorEqual)
+   */
   onRemove() {
     this._control.destroy();
     this._control = null;
   }
 
+  /**
+   * Update the displayed level.
+   * @param {string} level the level to be displayed
+   */
   updateLevel(level) {
     this.level = level;
     this._updateFilters();

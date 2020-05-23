@@ -2,7 +2,6 @@
   "name": "mapbox-gl-indoorequal",
   "version": "0.0.4",
   "description": "Integrate indoor= into your mapbox-gl.js map.",
-  "main": "index.js",
   "repository": "https://github.com/indoorequal/mapbox-gl-indoorequal",
   "author": "François de Metz",
   "license": "AGPL-3.0-or-later",
@@ -11,7 +10,8 @@
   "browser": "dist/mapbox-gl-indoorequal.umd.min.js",
   "scripts": {
     "build": "rollup --config",
-    "test": "jest"
+    "test": "jest",
+    "doc": "documentation readme mapbox-gl-indoorequal.js --section=API"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -28,6 +28,7 @@
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-node-resolve": "^7.1.3",
     "babel-jest": "^25.5.1",
+    "documentation": "^13.0.0",
     "jest": "^25.5.4",
     "rollup": "^2.7.6",
     "rollup-plugin-terser": "^5.3.0"
