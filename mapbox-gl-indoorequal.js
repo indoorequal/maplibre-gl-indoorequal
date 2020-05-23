@@ -1,6 +1,7 @@
 import debounce from 'debounce';
 import arrayEqual from 'array-equal';
 import findAllLevels from './levels';
+import LevelControl from './level_control';
 
 const SOURCE_ID = 'indoorequal';
 const commonPoi = {
@@ -243,9 +244,6 @@ export default class IndoorEqual {
     } else {
       this.map.on('load', this._addSource.bind(this));
     }
-
-    this.$el = document.createElement('div');
-    this.$el.classList.add('mapboxgl-ctrl', 'mapboxgl-ctrl-group', 'mapboxgl-ctrl-indoorequal');
   }
 
   on(name, fn) {
@@ -263,17 +261,18 @@ export default class IndoorEqual {
   }
 
   onAdd() {
-    return this.$el;
+    this._control = new LevelControl(this);
+    return this._control.$el;
   }
 
   onRemove() {
-    this.$el.remove();
+    this._control.destroy();
+    this._control = null;
   }
 
   updateLevel(level) {
     this.level = level;
     this._updateFilters();
-    this._refreshControl();
     this._emitLevelChange();
   }
 
@@ -307,25 +306,6 @@ export default class IndoorEqual {
       this.level = '0';
       this._emitLevelChange();
     }
-    this._refreshControl();
-  }
-
-  _refreshControl() {
-    this.$el.innerHTML = '';
-    if (this.levels.length === 1) {
-      return;
-    }
-    const buttons = this.levels.map((level) => {
-      const button = document.createElement('button');
-      const strong = document.createElement('strong');
-      strong.textContent = level;
-      button.appendChild(strong);
-      if (level == this.level) {
-        button.classList.add('mapboxgl-ctrl-active');
-      }
-      button.addEventListener('click', () => {  this.updateLevel(level); })
-      this.$el.appendChild(button);
-    });
   }
 
   _updateLevels() {

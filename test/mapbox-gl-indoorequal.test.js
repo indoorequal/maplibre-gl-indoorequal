@@ -48,18 +48,15 @@ describe('IndoorEqual', () => {
     expect(setFilter.mock.calls.length).toEqual(9);
   });
 
-  it('create a container', () => {
+  it('returns the level control container when calling onAdd', () => {
     const indoorEqual = new IndoorEqual(map);
-    expect(indoorEqual.$el).not.toBe(null);
-    expect(indoorEqual.$el.classList.contains('mapboxgl-ctrl')).toBe(true);
-    expect(indoorEqual.$el.classList.contains('mapboxgl-ctrl-group')).toBe(true);
-    expect(indoorEqual.$el.classList.contains('mapboxgl-ctrl-indoorequal')).toBe(true);
+    expect(indoorEqual.onAdd().tagName).toBe('DIV');
   });
 
-  it('returns the container when calling onAdd', () => {
+  it('returns the level control container when calling onRemove', () => {
     const indoorEqual = new IndoorEqual(map);
-    expect(indoorEqual.$el).not.toBe(null);
-    expect(indoorEqual.onAdd()).toEqual(indoorEqual.$el);
+    indoorEqual.onAdd();
+    indoorEqual.onRemove();
   });
 
   it('dont query the layer when the layer is not loaded', () => {
@@ -128,22 +125,6 @@ describe('IndoorEqual', () => {
     expect(levelsChangeCalled).toEqual(1);
   });
 
-  it('render the levels as button', () => {
-    const indoorEqual = new IndoorEqual(map);
-    indoorEqual.levels = ['1', '0'];
-    indoorEqual._refreshAfterLevelsUpdate();
-    expect(indoorEqual.$el.querySelectorAll('button').length).toEqual(2);
-    expect(indoorEqual.$el.querySelectorAll('button.mapboxgl-ctrl-active').length).toEqual(1);
-    expect(indoorEqual.$el.querySelector('button.mapboxgl-ctrl-active').textContent).toEqual('0');
-  });
-
-  it('render no levels if only one is available', () => {
-    const indoorEqual = new IndoorEqual(map);
-    indoorEqual.levels = ['0'];
-    indoorEqual._refreshAfterLevelsUpdate();
-    expect(indoorEqual.$el.querySelectorAll('button').length).toEqual(0);
-  });
-
   it('allow to set the current level', () => {
     const indoorEqual = new IndoorEqual(map);
     indoorEqual.levels = ['1', '0'];
@@ -151,8 +132,6 @@ describe('IndoorEqual', () => {
     expect(indoorEqual.level).toEqual('0');
     indoorEqual.updateLevel('1');
     expect(indoorEqual.level).toEqual('1');
-    expect(indoorEqual.$el.querySelectorAll('button.mapboxgl-ctrl-active').length).toEqual(1);
-    expect(indoorEqual.$el.querySelector('button.mapboxgl-ctrl-active').textContent).toEqual('1');
   });
 
   it('emit an event when the level change', () => {
