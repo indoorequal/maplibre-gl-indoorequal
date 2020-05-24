@@ -383,8 +383,7 @@ class IndoorEqual {
 
   _refreshAfterLevelsUpdate() {
     if (!this.levels.includes(this.level)) {
-      this.level = '0';
-      this._emitLevelChange();
+      this.updateLevel('0');
     }
   }
 
