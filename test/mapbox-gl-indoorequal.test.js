@@ -17,11 +17,11 @@ describe('IndoorEqual', () => {
     map.addLayer = addLayer;
     map.setFilter = setFilter;
     map.on = (name, fn) => { on[name] = fn};
-    map.loaded = () => false;
+    map.isStyleLoaded = () => false;
   });
 
-  it('load the source and the layers when the map is loaded', () => {
-    map.loaded = () => true;
+  it('load the source and the layers when the map style is loaded', () => {
+    map.isStyleLoaded = () => true;
     const indoorEqual = new IndoorEqual(map);
     expect(addSource.mock.calls.length).toEqual(1);
     expect(addSource.mock.calls[0]).toEqual(['indoorequal', { type: 'vector', url: 'https://tiles.indoorequal.org/' }]);
@@ -30,14 +30,14 @@ describe('IndoorEqual', () => {
   });
 
   it('customize the tiles url', () => {
-    map.loaded = () => true;
+    map.isStyleLoaded = () => true;
     const indoorEqual = new IndoorEqual(map, { url: 'https://example.com' });
     expect(addSource.mock.calls.length).toEqual(1);
     expect(addSource.mock.calls[0]).toEqual(['indoorequal', { type: 'vector', url: 'https://example.com' }]);
   });
 
-  it('load the source and the layers once the map is loaded', () => {
-    map.loaded = () => false;
+  it('load the source and the layers once the map style is loaded', () => {
+    map.isStyleLoaded = () => false;
     const indoorEqual = new IndoorEqual(map);
     expect(addSource.mock.calls.length).toEqual(0);
     expect(addLayer.mock.calls.length).toEqual(0);
