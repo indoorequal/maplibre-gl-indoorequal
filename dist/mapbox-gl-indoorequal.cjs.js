@@ -300,7 +300,7 @@ class IndoorEqual {
     this.level = "0";
     this.events = {};
 
-    if (this.map.loaded()) {
+    if (this.map.isStyleLoaded()) {
       this._addSource();
     } else {
       this.map.on('load', this._addSource.bind(this));
