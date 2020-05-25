@@ -235,7 +235,7 @@ const layers = [
  * @param {object} map the mapbox-gl instance of the map
  * @param {object} options
  * @param {url} [options.url] Override the default tiles URL (https://tiles.indoorequal.org/).
- * @param {url} [options.apiKey] The API key if you use the default tile URL (get your free key at [indoorequal.com](https://indoorequal.com)).
+ * @param {string} [options.apiKey] The API key if you use the default tile URL (get your free key at [indoorequal.com](https://indoorequal.com)).
  * @property {string} level The current level displayed
  * @property {array} levels  The levels that can be displayed in the current view
  * @fires IndoorEqual#levelschange
