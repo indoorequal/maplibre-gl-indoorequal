@@ -146,6 +146,6 @@ Type: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 ## License
 
-GNU AGPL v3
+BSD
 
 [indoor=]: https://indoorequal.org/
