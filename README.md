@@ -33,9 +33,11 @@ import mapboxgl from 'mapbox-gl';
 import IndoorEqual from 'mapbox-gl-indoorequal';
 import 'mapbox-gl-indoorequal/mapbox-gl-indoorequal.css';
 
+mapboxgl.accessToken = '<your-token>';
+
 const map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/traffic-night-v2',
+  style: 'mapbox://styles/mapbox/light-v10',
   center: [2.3601072, 48.876853],
   zoom: 18
 });
