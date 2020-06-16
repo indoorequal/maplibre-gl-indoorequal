@@ -5,9 +5,6 @@ const commonPoi = {
     "icon-image": "{class}_11",
     "text-anchor": "top",
     "text-field": "{name:latin}\n{name:nonlatin}",
-    "text-font": [
-      "Noto Sans Regular"
-    ],
     "text-max-width": 9,
     "text-offset": [
       0,
@@ -210,9 +207,6 @@ export const layers = [
     ],
     "layout": {
       "text-field": ["get", "name"],
-      "text-font": [
-        "Noto Sans Regular"
-      ],
       "text-max-width": 5,
       "text-size": 14
     },
