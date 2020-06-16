@@ -49,7 +49,6 @@ class LevelControl {
   }
 }
 
-const SOURCE_ID = 'indoorequal';
 const commonPoi = {
   "type": "symbol",
   "source-layer": "poi",
@@ -57,9 +56,6 @@ const commonPoi = {
     "icon-image": "{class}_11",
     "text-anchor": "top",
     "text-field": "{name:latin}\n{name:nonlatin}",
-    "text-font": [
-      "Noto Sans Regular"
-    ],
     "text-max-width": 9,
     "text-offset": [
       0,
@@ -262,9 +258,6 @@ const layers = [
     ],
     "layout": {
       "text-field": ["get", "name"],
-      "text-font": [
-        "Noto Sans Regular"
-      ],
       "text-max-width": 5,
       "text-size": 14
     },
@@ -275,6 +268,8 @@ const layers = [
     }
   }
 ];
+
+const SOURCE_ID = 'indoorequal';
 
 /**
  * Load the indoor= source and layers in your map.
