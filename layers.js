@@ -41,9 +41,6 @@ export const layers = [
         "level"
       ]
     ],
-    layout: {
-      visibility: "visible"
-    },
     paint: {
       "fill-color": "white"
     }
@@ -62,9 +59,6 @@ export const layers = [
         "platform"
       ]
     ],
-    "layout": {
-      "visibility": "visible"
-    },
     "paint": {
       "line-color": "#bfbfbf",
       "line-width": 1
@@ -82,9 +76,6 @@ export const layers = [
         "column"
       ]
     ],
-    "layout": {
-      "visibility": "visible"
-    },
     "paint": {
       "fill-color": "#bfbfbf"
     }
@@ -102,9 +93,6 @@ export const layers = [
         "wall"
       ]
     ],
-    "layout": {
-      "visibility": "visible"
-    },
     "paint": {
       "line-color": "gray",
       "line-width": 2
@@ -117,9 +105,6 @@ export const layers = [
     "filter": [
       "all"
     ],
-    "layout": {
-      "visibility": "visible",
-    },
     "paint": {
       "line-color": "gray",
       "line-dasharray": [
