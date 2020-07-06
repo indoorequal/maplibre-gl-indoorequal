@@ -4,7 +4,7 @@ import { terser } from 'rollup-plugin-terser';
 import commonjs from '@rollup/plugin-commonjs';
 import pkg from './package.json';
 
-const input = 'mapbox-gl-indoorequal.js';
+const input = 'src/index.js';
 
 export default [
   {

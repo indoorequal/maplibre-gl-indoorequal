@@ -1,4 +1,4 @@
-import IndoorEqual, { findAllLevels }  from '../mapbox-gl-indoorequal';
+import IndoorEqual, { findAllLevels }  from '../src/index';
 
 describe('IndoorEqual', () => {
   let map;

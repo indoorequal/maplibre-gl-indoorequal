@@ -1,4 +1,4 @@
-import LevelControl from '../level_control';
+import LevelControl from '../src/level_control';
 
 describe('LevelControl', () => {
   let indoorEqual;

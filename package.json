@@ -11,7 +11,7 @@
   "scripts": {
     "build": "rollup --config",
     "test": "jest",
-    "doc": "documentation readme mapbox-gl-indoorequal.js --section=API"
+    "doc": "documentation readme src/index.js --section=API"
   },
   "jest": {
     "moduleFileExtensions": [

@@ -1,4 +1,4 @@
-import findAllLevels from '../levels';
+import findAllLevels from '../src/levels';
 
 describe('findAllLevels', () => {
   it('find one level', () => {
