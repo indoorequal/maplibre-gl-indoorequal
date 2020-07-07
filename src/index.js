@@ -3,6 +3,7 @@ import arrayEqual from 'array-equal';
 import findAllLevels from './levels';
 import LevelControl from './level_control';
 import { layers } from './layers';
+import loadSprite from './sprite';
 
 const SOURCE_ID = 'indoorequal';
 
@@ -102,6 +103,29 @@ export default class IndoorEqual {
    */
   updateLevel(level) {
     this.setLevel(level);
+  }
+
+  /**
+   * Load a sprite and add all images to the map
+   * @param {string} baseUrl the baseUrl where to load the sprite
+   * @param {object} options
+   * @param {url} [options.update] Update existing image (default false)
+   * @return {Promise} It resolves an hash of images.
+   */
+  loadSprite(baseUrl, options = {}) {
+    const opts = { update: false, ...options };
+    return loadSprite(baseUrl)
+      .then((sprite) => {
+        for (const id in sprite) {
+          const { data, ...options } = sprite[id];
+          if (!this.map.hasImage(id)) {
+            this.map.addImage(id, data, options);
+          } else if (opts.update) {
+            this.map.updateImage(id, data);
+          }
+        }
+        return sprite;
+      });
   }
 
   _addSource() {

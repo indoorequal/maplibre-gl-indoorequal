@@ -1,3 +1,11 @@
+const mockSprite = { 'test': { data: null, pixelRatio: 1 }};
+jest.mock('../src/sprite', () => {
+  return {
+    __esModule: true,
+    default: () => Promise.resolve(mockSprite)
+  };
+});
+
 import IndoorEqual, { findAllLevels }  from '../src/index';
 
 describe('IndoorEqual', () => {
@@ -185,5 +193,39 @@ describe('IndoorEqual', () => {
     indoorEqual.off('levelchange', cb)
     indoorEqual.setLevel('0');
     expect(levelChangeCalled).toEqual(1);
+  });
+
+  it('allows to fetch a sprite and add image', () => {
+    map.hasImage = jest.fn();
+    map.addImage = jest.fn();
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
+    return indoorEqual.loadSprite('/sprite')
+      .then((sprites) => {
+        expect(sprites).toBe(mockSprite);
+        expect(map.hasImage.mock.calls.length).toEqual(1);
+        expect(map.addImage.mock.calls.length).toEqual(1);
+      });
+  });
+
+  it('allows to fetch a sprite and dont update image', () => {
+    map.hasImage = () => true;
+    map.updateImage = jest.fn();
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
+    return indoorEqual.loadSprite('/sprite')
+      .then((sprites) => {
+        expect(sprites).toBe(mockSprite);
+        expect(map.updateImage.mock.calls.length).toEqual(0);
+      });
+  });
+
+  it('allows to fetch a sprite and update existing image', () => {
+    map.hasImage = () => true;
+    map.updateImage = jest.fn();
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
+    return indoorEqual.loadSprite('/sprite', { update: true })
+      .then((sprites) => {
+        expect(sprites).toBe(mockSprite);
+        expect(map.updateImage.mock.calls.length).toEqual(1);
+      });
   });
 });
