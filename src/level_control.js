@@ -29,7 +29,7 @@ export default class LevelControl {
       if (level == this.indoorequal.level) {
         button.classList.add('mapboxgl-ctrl-active');
       }
-      button.addEventListener('click', () => {  this.indoorequal.updateLevel(level); })
+      button.addEventListener('click', () => {  this.indoorequal.setLevel(level); })
       this.$el.appendChild(button);
     });
   }

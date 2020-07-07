@@ -84,14 +84,24 @@ export default class IndoorEqual {
   }
 
   /**
-   * Update the displayed level.
+   * Set the displayed level.
+   * @param {string} level the level to be displayed
+   * @fires IndoorEqual#levelchange
+   */
+  setLevel(level) {
+    this.level = level;
+    this._updateFilters();
+    this._emitLevelChange();
+  }
+
+  /**
+   * Set the displayed level.
+   * @deprecated
    * @param {string} level the level to be displayed
    * @fires IndoorEqual#levelchange
    */
   updateLevel(level) {
-    this.level = level;
-    this._updateFilters();
-    this._emitLevelChange();
+    this.setLevel(level);
   }
 
   _addSource() {
@@ -122,7 +132,7 @@ export default class IndoorEqual {
 
   _refreshAfterLevelsUpdate() {
     if (!this.levels.includes(this.level)) {
-      this.updateLevel('0');
+      this.setLevel('0');
     }
   }
 

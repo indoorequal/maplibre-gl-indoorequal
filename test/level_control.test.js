@@ -48,11 +48,10 @@ describe('LevelControl', () => {
 
   it('a click on the button update the level', () => {
     indoorEqual.levels = ['1', '0'];
-    let callUpdateLevel = 0;
-    indoorEqual.updateLevel = () => callUpdateLevel++;
+    indoorEqual.setLevel = jest.fn();
     const control = new LevelControl(indoorEqual);
     control.$el.querySelectorAll('button')[1].click();
-    expect(callUpdateLevel).toEqual(1);
+    expect(indoorEqual.setLevel.mock.calls.length).toEqual(1);
   });
 
   it('refresh the control when the current level change', () => {

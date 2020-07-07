@@ -144,7 +144,7 @@ describe('IndoorEqual', () => {
     indoorEqual.levels = ['1', '0'];
     indoorEqual._refreshAfterLevelsUpdate();
     expect(indoorEqual.level).toEqual('0');
-    indoorEqual.updateLevel('1');
+    indoorEqual.setLevel('1');
     expect(indoorEqual.level).toEqual('1');
   });
 
@@ -157,14 +157,14 @@ describe('IndoorEqual', () => {
       expect(level).toEqual('1');
       levelChangeCalled++;
     });
-    indoorEqual.updateLevel('1');
+    indoorEqual.setLevel('1');
     expect(levelChangeCalled).toEqual(1);
   });
 
   it('reset the value to 0 if the current level doesnt exist', () => {
     const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     indoorEqual.levels = ['1', '0'];
-    indoorEqual.updateLevel('1');
+    indoorEqual.setLevel('1');
     indoorEqual._refreshAfterLevelsUpdate();
     indoorEqual.levels = ['0'];
     indoorEqual._refreshAfterLevelsUpdate();
@@ -180,10 +180,10 @@ describe('IndoorEqual', () => {
       levelChangeCalled++;
     };
     indoorEqual.on('levelchange', cb);
-    indoorEqual.updateLevel('1');
+    indoorEqual.setLevel('1');
     expect(levelChangeCalled).toEqual(1);
     indoorEqual.off('levelchange', cb)
-    indoorEqual.updateLevel('0');
+    indoorEqual.setLevel('0');
     expect(levelChangeCalled).toEqual(1);
   });
 });
