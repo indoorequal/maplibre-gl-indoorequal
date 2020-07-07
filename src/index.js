@@ -21,7 +21,7 @@ const SOURCE_ID = 'indoorequal';
 export default class IndoorEqual {
   constructor(map, options = {}) {
     const defaultOpts = { url: 'https://tiles.indoorequal.org/' };
-    const opts = { ...defaultOpts, ...options };
+    const opts = { ...defaultOpts, ...options };
     if (opts.url === defaultOpts.url && !opts.apiKey) {
       throw 'You must register your apiKey at https://indoorequal.com before and set it as apiKey param.';
     }
