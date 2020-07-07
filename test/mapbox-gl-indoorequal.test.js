@@ -54,6 +54,14 @@ describe('IndoorEqual', () => {
     expect(setFilter.mock.calls.length).toEqual(9);
   });
 
+  it('allow to customize the layers', () => {
+    map.isStyleLoaded = () => true;
+    const layer = { id: 'test2', type: 'line', 'source-layer': 'area' };
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey', layers: [layer] });
+    expect(addLayer.mock.calls.length).toEqual(1);
+    expect(setFilter.mock.calls.length).toEqual(1);
+  });
+
   it('returns the level control container when calling onAdd', () => {
     const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     expect(indoorEqual.onAdd().tagName).toBe('DIV');

@@ -12,6 +12,7 @@ const SOURCE_ID = 'indoorequal';
  * @param {object} options
  * @param {url} [options.url] Override the default tiles URL (https://tiles.indoorequal.org/).
  * @param {string} [options.apiKey] The API key if you use the default tile URL (get your free key at [indoorequal.com](https://indoorequal.com)).
+ * @param {array} [options.layers] The layers to be used to style indoor= tiles.
  * @property {string} level The current level displayed
  * @property {array} levels  The levels that can be displayed in the current view
  * @fires IndoorEqual#levelschange
@@ -20,7 +21,7 @@ const SOURCE_ID = 'indoorequal';
  */
 export default class IndoorEqual {
   constructor(map, options = {}) {
-    const defaultOpts = { url: 'https://tiles.indoorequal.org/' };
+    const defaultOpts = { url: 'https://tiles.indoorequal.org/', layers };
     const opts = { ...defaultOpts, ...options };
     if (opts.url === defaultOpts.url && !opts.apiKey) {
       throw 'You must register your apiKey at https://indoorequal.com before and set it as apiKey param.';
@@ -28,6 +29,7 @@ export default class IndoorEqual {
     this.map = map;
     this.url = opts.url;
     this.apiKey = opts.apiKey;
+    this.layers = opts.layers;
     this.levels = [];
     this.level = "0";
     this.events = {};
@@ -98,7 +100,7 @@ export default class IndoorEqual {
       type: 'vector',
       url: `${this.url}${queryParams}`
     });
-    layers.forEach((layer) => {
+    this.layers.forEach((layer) => {
       this.map.addLayer({
         source: SOURCE_ID,
         ...layer
@@ -113,8 +115,8 @@ export default class IndoorEqual {
   }
 
   _updateFilters() {
-    layers.forEach((layer) => {
-      this.map.setFilter(layer.id, [ ...layer.filter, ['==', 'level', this.level]]);
+    this.layers.forEach((layer) => {
+      this.map.setFilter(layer.id, [ ...layer.filter || ['all'], ['==', 'level', this.level]]);
     });
   }
 
