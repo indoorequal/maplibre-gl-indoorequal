@@ -43,7 +43,7 @@ class LevelControl {
       if (level == this.indoorequal.level) {
         button.classList.add('mapboxgl-ctrl-active');
       }
-      button.addEventListener('click', () => {  this.indoorequal.updateLevel(level); });
+      button.addEventListener('click', () => {  this.indoorequal.setLevel(level); });
       this.$el.appendChild(button);
     });
   }
@@ -92,9 +92,6 @@ const layers = [
         "level"
       ]
     ],
-    layout: {
-      visibility: "visible"
-    },
     paint: {
       "fill-color": "white"
     }
@@ -113,9 +110,6 @@ const layers = [
         "platform"
       ]
     ],
-    "layout": {
-      "visibility": "visible"
-    },
     "paint": {
       "line-color": "#bfbfbf",
       "line-width": 1
@@ -133,9 +127,6 @@ const layers = [
         "column"
       ]
     ],
-    "layout": {
-      "visibility": "visible"
-    },
     "paint": {
       "fill-color": "#bfbfbf"
     }
@@ -153,9 +144,6 @@ const layers = [
         "wall"
       ]
     ],
-    "layout": {
-      "visibility": "visible"
-    },
     "paint": {
       "line-color": "gray",
       "line-width": 2
@@ -168,9 +156,6 @@ const layers = [
     "filter": [
       "all"
     ],
-    "layout": {
-      "visibility": "visible",
-    },
     "paint": {
       "line-color": "gray",
       "line-dasharray": [
@@ -269,6 +254,145 @@ const layers = [
   }
 ];
 
+function createImage(image, {width, height}, channels, data) {
+    if (!data) {
+        data = new Uint8Array(width * height * channels);
+    } else if (data instanceof Uint8ClampedArray) {
+        data = new Uint8Array(data.buffer);
+    } else if (data.length !== width * height * channels) {
+        throw new RangeError('mismatched image size');
+    }
+    image.width = width;
+    image.height = height;
+    image.data = data;
+    return image;
+}
+
+function resizeImage(image, {width, height}, channels) {
+    if (width === image.width && height === image.height) {
+        return;
+    }
+
+    const newImage = createImage({}, {width, height}, channels);
+
+    copyImage(image, newImage, {x: 0, y: 0}, {x: 0, y: 0}, {
+        width: Math.min(image.width, width),
+        height: Math.min(image.height, height)
+    }, channels);
+
+    image.width = width;
+    image.height = height;
+    image.data = newImage.data;
+}
+
+function copyImage(srcImg, dstImg, srcPt, dstPt, size, channels) {
+    if (size.width === 0 || size.height === 0) {
+        return dstImg;
+    }
+
+    if (size.width > srcImg.width ||
+        size.height > srcImg.height ||
+        srcPt.x > srcImg.width - size.width ||
+        srcPt.y > srcImg.height - size.height) {
+        throw new RangeError('out of range source coordinates for image copy');
+    }
+
+    if (size.width > dstImg.width ||
+        size.height > dstImg.height ||
+        dstPt.x > dstImg.width - size.width ||
+        dstPt.y > dstImg.height - size.height) {
+        throw new RangeError('out of range destination coordinates for image copy');
+    }
+
+    const srcData = srcImg.data;
+    const dstData = dstImg.data;
+
+    for (let y = 0; y < size.height; y++) {
+        const srcOffset = ((srcPt.y + y) * srcImg.width + srcPt.x) * channels;
+        const dstOffset = ((dstPt.y + y) * dstImg.width + dstPt.x) * channels;
+        for (let i = 0; i < size.width * channels; i++) {
+            dstData[dstOffset + i] = srcData[srcOffset + i];
+        }
+    }
+    return dstImg;
+}
+
+// Not premultiplied, because ImageData is not premultiplied.
+// UNPACK_PREMULTIPLY_ALPHA_WEBGL must be used when uploading to a texture.
+class RGBAImage {
+    constructor(size, data) {
+        createImage(this, size, 4, data);
+    }
+
+    resize(size) {
+        resizeImage(this, size, 4);
+    }
+
+    replace(data, copy) {
+        if (copy) {
+            this.data.set(data);
+        } else if (data instanceof Uint8ClampedArray) {
+            this.data = new Uint8Array(data.buffer);
+        } else {
+            this.data = data;
+        }
+    }
+
+    clone() {
+        return new RGBAImage({width: this.width, height: this.height}, new Uint8Array(this.data));
+    }
+
+    static copy(srcImg, dstImg, srcPt, dstPt, size) {
+        copyImage(srcImg, dstImg, srcPt, dstPt, size, 4);
+    }
+}
+
+function getImageData(img, padding) {
+  const canvas = window.document.createElement('canvas');
+  const context = canvas.getContext('2d');
+  if (!context) {
+    throw new Error('failed to create canvas 2d context');
+  }
+  canvas.width = img.width;
+  canvas.height = img.height;
+  context.drawImage(img, 0, 0, img.width, img.height);
+  return context.getImageData(0, 0, img.width, img.height);
+}
+
+function loadSprite(baseUrl) {
+  const format = window.devicePixelRatio > 1 ? '@2x' : '';
+  let json, image;
+
+  const jsonRequest = fetch(`${baseUrl}${format}.json`)
+        .then(r => r.json())
+        .then(r => json = r);
+
+  const imageRequest = fetch(`${baseUrl}${format}.png`)
+        .then(r => r.blob())
+        .then(r => {
+          image = new Image();
+          image.src = URL.createObjectURL(r);
+          return new Promise((resolve, reject) => {
+            image.onload = () => resolve();
+            image.onerror = () => reject();
+          });
+        });
+
+  return Promise.all([jsonRequest, imageRequest])
+    .then(() => {
+      const imageData = getImageData(image);
+      const result = {};
+
+      for (const id in json) {
+        const {width, height, x, y, sdf, pixelRatio, stretchX, stretchY, content} = json[id];
+        const data = new RGBAImage({width, height});
+        RGBAImage.copy(imageData, data, {x, y}, {x: 0, y: 0}, {width, height});
+        result[id] = {data, pixelRatio, sdf, stretchX, stretchY, content};
+      }
+      return result;
+    });
+}
+
 const SOURCE_ID = 'indoorequal';
 
 /**
@@ -277,6 +401,7 @@ const SOURCE_ID = 'indoorequal';
  * @param {object} options
  * @param {url} [options.url] Override the default tiles URL (https://tiles.indoorequal.org/).
  * @param {string} [options.apiKey] The API key if you use the default tile URL (get your free key at [indoorequal.com](https://indoorequal.com)).
+ * @param {array} [options.layers] The layers to be used to style indoor= tiles.
  * @property {string} level The current level displayed
  * @property {array} levels  The levels that can be displayed in the current view
  * @fires IndoorEqual#levelschange
@@ -285,14 +410,15 @@ const SOURCE_ID = 'indoorequal';
  */
 class IndoorEqual {
   constructor(map, options = {}) {
-    const defaultOpts = { url: 'https://tiles.indoorequal.org/' };
-    const opts = { ...defaultOpts, ...options };
+    const defaultOpts = { url: 'https://tiles.indoorequal.org/', layers };
+    const opts = { ...defaultOpts, ...options };
     if (opts.url === defaultOpts.url && !opts.apiKey) {
       throw 'You must register your apiKey at https://indoorequal.com before and set it as apiKey param.';
     }
     this.map = map;
     this.url = opts.url;
     this.apiKey = opts.apiKey;
+    this.layers = opts.layers;
     this.levels = [];
     this.level = "0";
     this.events = {};
@@ -347,14 +473,47 @@ class IndoorEqual {
   }
 
   /**
-   * Update the displayed level.
+   * Set the displayed level.
+   * @param {string} level the level to be displayed
+   * @fires IndoorEqual#levelchange
+   */
+  setLevel(level) {
+    this.level = level;
+    this._updateFilters();
+    this._emitLevelChange();
+  }
+
+  /**
+   * Set the displayed level.
+   * @deprecated
    * @param {string} level the level to be displayed
    * @fires IndoorEqual#levelchange
    */
   updateLevel(level) {
-    this.level = level;
-    this._updateFilters();
-    this._emitLevelChange();
+    this.setLevel(level);
+  }
+
+  /**
+   * Load a sprite and add all images to the map
+   * @param {string} baseUrl the baseUrl where to load the sprite
+   * @param {object} options
+   * @param {url} [options.update] Update existing image (default false)
+   * @return {Promise} It resolves an hash of images.
+   */
+  loadSprite(baseUrl, options = {}) {
+    const opts = { update: false, ...options };
+    return loadSprite(baseUrl)
+      .then((sprite) => {
+        for (const id in sprite) {
+          const { data, ...options } = sprite[id];
+          if (!this.map.hasImage(id)) {
+            this.map.addImage(id, data, options);
+          } else if (opts.update) {
+            this.map.updateImage(id, data);
+          }
+        }
+        return sprite;
+      });
   }
 
   _addSource() {
@@ -363,7 +522,7 @@ class IndoorEqual {
       type: 'vector',
       url: `${this.url}${queryParams}`
     });
-    layers.forEach((layer) => {
+    this.layers.forEach((layer) => {
       this.map.addLayer({
         source: SOURCE_ID,
         ...layer
@@ -378,14 +537,14 @@ class IndoorEqual {
   }
 
   _updateFilters() {
-    layers.forEach((layer) => {
-      this.map.setFilter(layer.id, [ ...layer.filter, ['==', 'level', this.level]]);
+    this.layers.forEach((layer) => {
+      this.map.setFilter(layer.id, [ ...layer.filter || ['all'], ['==', 'level', this.level]]);
     });
   }
 
   _refreshAfterLevelsUpdate() {
     if (!this.levels.includes(this.level)) {
-      this.updateLevel('0');
+      this.setLevel('0');
     }
   }
 

@@ -61,8 +61,12 @@ map.addControl(indoorEqual);
         -   [Parameters](#parameters-2)
     -   [onAdd](#onadd)
     -   [onRemove](#onremove)
-    -   [updateLevel](#updatelevel)
+    -   [setLevel](#setlevel)
         -   [Parameters](#parameters-3)
+    -   [updateLevel](#updatelevel)
+        -   [Parameters](#parameters-4)
+    -   [loadSprite](#loadsprite)
+        -   [Parameters](#parameters-5)
 -   [IndoorEqual#levelschange](#indoorequallevelschange)
 -   [IndoorEqual#levelchange](#indoorequallevelchange)
 
@@ -76,6 +80,7 @@ Load the indoor= source and layers in your map.
 -   `options` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
     -   `options.url` **[url](https://developer.mozilla.org/docs/Web/API/URL/URL)?** Override the default tiles URL (<https://tiles.indoorequal.org/>).
     -   `options.apiKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** The API key if you use the default tile URL (get your free key at [indoorequal.com](https://indoorequal.com)).
+    -   `options.layers` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)?** The layers to be used to style indoor= tiles.
 
 #### Properties
 
@@ -112,13 +117,38 @@ Used when adding the control via the map instance: map.addControl(indoorEqual)
 Remove the level control
 Used when removing the control via the map instance: map.removeControl(indoorEqual)
 
-#### updateLevel
+#### setLevel
 
-Update the displayed level.
+Set the displayed level.
 
 ##### Parameters
 
 -   `level` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the level to be displayed
+
+#### updateLevel
+
+Set the displayed level.
+
+##### Parameters
+
+-   `level` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the level to be displayed
+
+**Meta**
+
+-   **deprecated**: This is deprecated.
+
+
+#### loadSprite
+
+Load a sprite and add all images to the map
+
+##### Parameters
+
+-   `baseUrl` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the baseUrl where to load the sprite
+-   `options` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
+    -   `options.update` **[url](https://developer.mozilla.org/docs/Web/API/URL/URL)?** Update existing image (default false)
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** It resolves an hash of images.
 
 ### IndoorEqual#levelschange
 
