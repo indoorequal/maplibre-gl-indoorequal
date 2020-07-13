@@ -97,11 +97,12 @@ export default class IndoorEqual {
 
   /**
    * Set the displayed level.
-   * @deprecated
+   * @deprecated Use setLevel instead
    * @param {string} level the level to be displayed
    * @fires IndoorEqual#levelchange
    */
   updateLevel(level) {
+    console.log('The updateLevel method is deprecated. Please use setLevel instead.');
     this.setLevel(level);
   }
 

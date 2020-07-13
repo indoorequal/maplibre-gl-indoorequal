@@ -135,7 +135,7 @@ Set the displayed level.
 
 **Meta**
 
--   **deprecated**: This is deprecated.
+-   **deprecated**: Use setLevel instead
 
 
 #### loadSprite
