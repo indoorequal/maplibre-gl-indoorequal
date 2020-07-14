@@ -5,7 +5,8 @@ mapbobx-gl-indoorequal is a mapbox-gl.js plugin to display indoor data from [ind
 It provides:
 
 -   a level control to change the level displayed on the map
--   a programatic API to change the level displayed
+-   a programatic API to list the levels available and set the level displayed
+-   customize options to style the layers and load your sprites
 
 [**See the demo**](https://indoorequal.github.io/mapbox-gl-indoorequal).
 
