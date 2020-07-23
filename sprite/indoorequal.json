@@ -1,0 +1,100 @@
+{
+  "bench_11": {
+    "height": 11,
+    "pixelRatio": 1,
+    "width": 11,
+    "x": 40,
+    "y": 36
+  },
+  "butcher_11": {
+    "height": 14,
+    "pixelRatio": 1,
+    "width": 14,
+    "x": 36,
+    "y": 0
+  },
+  "elevator_11": {
+    "height": 12,
+    "pixelRatio": 1,
+    "width": 12,
+    "x": 28,
+    "y": 36
+  },
+  "entrance_11": {
+    "height": 17,
+    "pixelRatio": 1,
+    "width": 17,
+    "x": 18,
+    "y": 18
+  },
+  "greengrocer_11": {
+    "height": 14,
+    "pixelRatio": 1,
+    "width": 14,
+    "x": 50,
+    "y": 0
+  },
+  "indoorequal-elevator": {
+    "height": 18,
+    "pixelRatio": 1,
+    "width": 18,
+    "x": 0,
+    "y": 0
+  },
+  "indoorequal-escalator": {
+    "height": 18,
+    "pixelRatio": 1,
+    "width": 18,
+    "x": 18,
+    "y": 0
+  },
+  "indoorequal-steps": {
+    "height": 18,
+    "pixelRatio": 1,
+    "width": 18,
+    "x": 0,
+    "y": 18
+  },
+  "pastry_11": {
+    "height": 14,
+    "pixelRatio": 1,
+    "width": 14,
+    "x": 35,
+    "y": 18
+  },
+  "public_transport_tickets_11": {
+    "height": 14,
+    "pixelRatio": 1,
+    "width": 14,
+    "x": 49,
+    "y": 18
+  },
+  "seafood_11": {
+    "height": 14,
+    "pixelRatio": 1,
+    "width": 14,
+    "x": 0,
+    "y": 36
+  },
+  "tea_11": {
+    "height": 14,
+    "pixelRatio": 1,
+    "width": 14,
+    "x": 14,
+    "y": 36
+  },
+  "toilets_11": {
+    "height": 11,
+    "pixelRatio": 1,
+    "width": 11,
+    "x": 51,
+    "y": 36
+  },
+  "waste_basket_11": {
+    "height": 11,
+    "pixelRatio": 1,
+    "width": 11,
+    "x": 0,
+    "y": 50
+  }
+}

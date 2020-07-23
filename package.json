@@ -11,7 +11,8 @@
   "scripts": {
     "build": "rollup --config",
     "test": "jest",
-    "doc": "documentation readme src/index.js --section=API"
+    "doc": "documentation readme src/index.js --section=API",
+    "sprite": "spritezero ./sprite/indoorequal ./mapicons && spritezero --retina ./sprite/indoorequal@2x ./mapicons"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
+    "@mapbox/spritezero-cli": "https://github.com/francois2metz/spritezero-cli",
     "@rollup/plugin-babel": "^5.0.0",
     "@rollup/plugin-commonjs": "^13.0",
     "@rollup/plugin-node-resolve": "^8.1",

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11" height="11" version="1.1" viewBox="0 0 11 11" xmlns="http://www.w3.org/2000/svg">
+ <rect id="canvas" y="1" width="10" height="10" fill="none" visibility="hidden"/>
+ <path id="waste-basket" d="m4.125 1.375h-1.375l-1.375 1.375h8.25l-1.375-1.375h-1.375l-1.375-1.375zm-2.75 2.75 1.375 6.875h5.5l1.375-6.875z" fill="#444"/>
+</svg>
