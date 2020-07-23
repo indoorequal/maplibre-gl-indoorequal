@@ -127,6 +127,49 @@ export const layers = [
     }
   },
   {
+    id: "indoor-transportation-poi",
+    "type": "symbol",
+    "source-layer": "transportation",
+    "filter": [
+      "all",
+      [
+        "in",
+        "$type",
+        "Point",
+        "LineString"
+      ],
+      [
+        "in",
+        "class",
+        "steps",
+        "elevator",
+        "escalator"
+      ]
+    ],
+    "layout": {
+      "icon-image": [
+        "case",
+        [
+          "has",
+          "conveying"
+        ],
+        "indoorequal-escalator",
+        [
+          "concat",
+          [
+            "literal",
+            "indoorequal-"
+          ],
+          [
+            "get",
+            "class"
+          ]]
+      ],
+      "symbol-placement": "line-center",
+      "icon-rotation-alignment": "viewport"
+    }
+  },
+  {
     id: "indoor-poi-rank1",
     ...commonPoi,
     "filter": [
