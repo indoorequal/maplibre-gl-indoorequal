@@ -9,6 +9,7 @@
   "module": "dist/mapbox-gl-indoorequal.esm.js",
   "browser": "dist/mapbox-gl-indoorequal.umd.min.js",
   "scripts": {
+    "dev": "rollup --config --watch",
     "build": "rollup --config",
     "test": "jest",
     "doc": "documentation readme src/index.js --section=API",
