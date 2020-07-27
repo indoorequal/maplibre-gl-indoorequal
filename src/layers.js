@@ -42,7 +42,17 @@ export const layers = [
       ]
     ],
     paint: {
-      "fill-color": "white"
+      "fill-color": [
+        "case",
+        // if private
+        ["all", ["has", "access"], ["in", ["get", "access"], ["literal", ["no", "private"]]]],
+        "#F2F1F0",
+        // if POI
+        ["all", ["has", "is_poi"], ["==", ["get", "is_poi"], true]],
+        "#D4EDFF",
+        // default
+        "#fdfcfa"
+      ]
     }
   },
   {
