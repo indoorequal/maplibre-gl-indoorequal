@@ -93,7 +93,17 @@ const layers = [
       ]
     ],
     paint: {
-      "fill-color": "white"
+      "fill-color": [
+        "case",
+        // if private
+        ["all", ["has", "access"], ["in", ["get", "access"], ["literal", ["no", "private"]]]],
+        "#F2F1F0",
+        // if POI
+        ["all", ["has", "is_poi"], ["==", ["get", "is_poi"], true]],
+        "#D4EDFF",
+        // default
+        "#fdfcfa"
+      ]
     }
   },
   {
@@ -175,6 +185,49 @@ const layers = [
           ]
         ]
       }
+    }
+  },
+  {
+    id: "indoor-transportation-poi",
+    "type": "symbol",
+    "source-layer": "transportation",
+    "filter": [
+      "all",
+      [
+        "in",
+        "$type",
+        "Point",
+        "LineString"
+      ],
+      [
+        "in",
+        "class",
+        "steps",
+        "elevator",
+        "escalator"
+      ]
+    ],
+    "layout": {
+      "icon-image": [
+        "case",
+        [
+          "has",
+          "conveying"
+        ],
+        "indoorequal-escalator",
+        [
+          "concat",
+          [
+            "literal",
+            "indoorequal-"
+          ],
+          [
+            "get",
+            "class"
+          ]]
+      ],
+      "symbol-placement": "line-center",
+      "icon-rotation-alignment": "viewport"
     }
   },
   {
@@ -485,11 +538,12 @@ class IndoorEqual {
 
   /**
    * Set the displayed level.
-   * @deprecated
+   * @deprecated Use setLevel instead
    * @param {string} level the level to be displayed
    * @fires IndoorEqual#levelchange
    */
   updateLevel(level) {
+    console.log('The updateLevel method is deprecated. Please use setLevel instead.');
     this.setLevel(level);
   }
 
