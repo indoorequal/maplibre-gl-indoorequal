@@ -1,6 +1,6 @@
 # Mapbox-gl-indoorequal ![build](https://img.shields.io/github/workflow/status/indoorequal/mapbox-gl-indoorequal/CI) [![npm](https://img.shields.io/npm/v/mapbox-gl-indoorequal)](https://www.npmjs.com/package/mapbox-gl-indoorequal)
 
-mapbobx-gl-indoorequal is a mapbox-gl.js plugin to display indoor data from [indoor=][].
+mapbobx-gl-indoorequal is a [mapbox-gl.js][mapbox-gl] plugin to display indoor data from [indoor=][].
 
 It provides:
 
@@ -51,7 +51,7 @@ map.addControl(indoorEqual);
 ## Loading the default sprite
 
 The default style make uses of a sprite that has to be loaded manually
-as mapbox-gl require an absolute path. The sprite is already builded
+as [mapbox-gl][] require an absolute path. The sprite is already builded
 and available in the `sprite` directory.
 
 To load the sprite, use the `loadSprite` method with the absolute path
@@ -215,3 +215,4 @@ Type: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 BSD
 
 [indoor=]: https://indoorequal.org/
+[mapbox-gl]: https://github.com/mapbox/mapbox-gl-js
