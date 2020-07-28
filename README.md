@@ -4,9 +4,10 @@ mapbobx-gl-indoorequal is a mapbox-gl.js plugin to display indoor data from [ind
 
 It provides:
 
+-   a default style of the indoor tiles
+-   a way to customize the style and load your sprites
 -   a level control to change the level displayed on the map
 -   a programatic API to list the levels available and set the level displayed
--   customize options to style the layers and load your sprites
 
 [**See the demo**](https://indoorequal.github.io/mapbox-gl-indoorequal).
 
@@ -46,6 +47,38 @@ const map = new mapboxgl.Map({
 const indoorEqual = new IndoorEqual(map, { apiKey: 'mykey' });
 map.addControl(indoorEqual);
 ```
+
+## Loading the default sprite
+
+The default style make uses of a sprite that has to be loaded manually
+as mapbox-gl require an absolute path. The sprite is already builded
+and available in the `sprite` directory.
+
+To load the sprite, use the `loadSprite` method with the absolute path
+to the sprite and its name `/directory-to-change/indoorequal`.
+
+**Usage with [Parcel](https://parceljs.org/)**
+
+Install the
+[parcel-plugin-static-files-copy](https://github.com/elwin013/parcel-plugin-static-files-copy)
+package and add to your `package.json`:
+
+```
+"staticFiles": {
+  "staticPath": "node_modules/mapbox-gl-indoorequal/sprite"
+},
+```
+
+Then load the sprite:
+
+```javascript
+const indoorequal = new IndoorEqual(map, { apiKey: 'myKey' });
+indoorequal.loadSprite('/indoorequal');
+```
+
+**Usage with [webpack](https://webpack.js.org/)**
+
+TODO
 
 ## API
 
