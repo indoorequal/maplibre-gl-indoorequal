@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="12" height="12" version="1.1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
- <rect id="canvas" width="12" height="12" fill="none" visibility="hidden"/>
- <path d="m8 0v1h2v10h-1.7441l-0.027057 1h3.7711v-12zm-5 7 3 5 3-5h-2v-2h2l-3-5-3 5h2v2zm0.58174 5 0.040586-1h-1.6223v-10h2v-1h-4v12z" fill="#444" fill-rule="evenodd"/>
-</svg>

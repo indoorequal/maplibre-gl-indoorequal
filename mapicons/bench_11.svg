@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="11" height="11" version="1.1" viewBox="0 0 11 11" xmlns="http://www.w3.org/2000/svg">
- <rect id="canvas" y="-3" width="14" height="14" fill="none" visibility="hidden"/>
- <path id="bench" d="m0.61111 3.463c-0.81481 0-0.81481 1.2222 0 1.2222h9.7778c0.81482 0 0.81482-1.2222 0-1.2222zm0.81481 1.6296v2.4444h1.2222v-2.4444zm6.9259 0v2.4444h1.2222v-2.4444z" fill="#444" stroke-width=".81481"/>
-</svg>
