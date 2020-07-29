@@ -53,7 +53,7 @@ const commonPoi = {
   "type": "symbol",
   "source-layer": "poi",
   "layout": {
-    "icon-image": "{class}_11",
+    "icon-image": "indoorequal-{class}",
     "text-anchor": "top",
     "text-field": "{name:latin}\n{name:nonlatin}",
     "text-max-width": 9,
@@ -284,7 +284,7 @@ const layers = [
     ],
     "layout": {
       ...commonPoi.layout,
-      "icon-image": "{subclass}_11"
+      "icon-image": "indoorequal-{subclass}"
     }
   },
   {
