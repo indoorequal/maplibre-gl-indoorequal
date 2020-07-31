@@ -50,6 +50,9 @@ export const layers = [
         // if POI
         ["all", ["==", ["get", "is_poi"], true], ["!=", ["get", "class"], "corridor"]],
         "#D4EDFF",
+        // if is a room
+        ["==", ["get", "class"], "room"],
+        "#fefee2",
         // default
         "#fdfcfa"
       ]
