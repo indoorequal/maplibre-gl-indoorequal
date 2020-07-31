@@ -103,8 +103,11 @@ const layers = [
         ["all", ["has", "access"], ["in", ["get", "access"], ["literal", ["no", "private"]]]],
         "#F2F1F0",
         // if POI
-        ["all", ["has", "is_poi"], ["==", ["get", "is_poi"], true]],
+        ["all", ["==", ["get", "is_poi"], true], ["!=", ["get", "class"], "corridor"]],
         "#D4EDFF",
+        // if is a room
+        ["==", ["get", "class"], "room"],
+        "#fefee2",
         // default
         "#fdfcfa"
       ]
