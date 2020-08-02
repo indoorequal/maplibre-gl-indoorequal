@@ -198,15 +198,19 @@ Type: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 ## Develop
 
-### Run tests
+**Build the plugin and watch for changes**
+
+    yarn dev
+
+**Run tests**
 
     yarn test
 
-### Build a new version
+**Build a new version**
 
     yarn build
 
-### Generate the documentation
+**Generate the documentation**
 
     yarn doc
 
