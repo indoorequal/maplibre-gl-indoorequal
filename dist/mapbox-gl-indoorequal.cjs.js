@@ -57,7 +57,37 @@ const commonPoi = {
   "type": "symbol",
   "source-layer": "poi",
   "layout": {
-    "icon-image": "indoorequal-{class}",
+    "icon-image": [
+      "coalesce",
+      [
+        "image",
+        [
+          "concat",
+          [
+            "literal",
+            "indoorequal-"
+          ],
+          [
+            "get",
+            "subclass"
+          ]
+        ],
+      ],
+      [
+        "image",
+        [
+          "concat",
+          [
+            "literal",
+            "indoorequal-"
+          ],
+          [
+            "get",
+            "class"
+          ]
+        ]
+      ]
+    ],
     "text-anchor": "top",
     "text-field": "{name:latin}\n{name:nonlatin}",
     "text-max-width": 9,
@@ -76,7 +106,7 @@ const commonPoi = {
   }
 };
 
-const rank2Class = ["waste_basket", "information"];
+const rank2Class = ["waste_basket", "information", "vending_machine"];
 
 const layers = [
   {
@@ -231,7 +261,8 @@ const layers = [
           [
             "get",
             "class"
-          ]]
+          ]
+        ]
       ],
       "symbol-placement": "line-center",
       "icon-rotation-alignment": "viewport"
@@ -271,28 +302,6 @@ const layers = [
         ...rank2Class
       ]
     ]
-  },
-  {
-    id: "indoor-poi-vending",
-    ...commonPoi,
-    minzoom: 19,
-    "filter": [
-      "all",
-      [
-        "==",
-        "$type",
-        "Point"
-      ],
-      [
-        "==",
-        "class",
-        "vending_machine"
-      ]
-    ],
-    "layout": {
-      ...commonPoi.layout,
-      "icon-image": "indoorequal-{subclass}"
-    }
   },
   {
     id: "indoor-name",
