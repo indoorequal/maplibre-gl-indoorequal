@@ -33,8 +33,8 @@ describe('IndoorEqual', () => {
     const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     expect(addSource.mock.calls.length).toEqual(1);
     expect(addSource.mock.calls[0]).toEqual(['indoorequal', { type: 'vector', url: 'https://tiles.indoorequal.org/?key=myapikey' }]);
-    expect(addLayer.mock.calls.length).toEqual(10);
-    expect(setFilter.mock.calls.length).toEqual(10);
+    expect(addLayer.mock.calls.length).toEqual(9);
+    expect(setFilter.mock.calls.length).toEqual(9);
   });
 
   it('customize the tiles url', () => {
@@ -58,8 +58,8 @@ describe('IndoorEqual', () => {
     expect(setFilter.mock.calls.length).toEqual(0);
     on.load();
     expect(addSource.mock.calls.length).toEqual(1);
-    expect(addLayer.mock.calls.length).toEqual(10);
-    expect(setFilter.mock.calls.length).toEqual(10);
+    expect(addLayer.mock.calls.length).toEqual(9);
+    expect(setFilter.mock.calls.length).toEqual(9);
   });
 
   it('allow to customize the layers', () => {
