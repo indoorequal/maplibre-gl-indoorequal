@@ -66,7 +66,7 @@
     "height": 18,
     "pixelRatio": 1,
     "width": 18,
-    "x": 231,
+    "x": 252,
     "y": 0
   },
   "indoorequal-bicycle_parking": {
@@ -111,403 +111,410 @@
     "x": 42,
     "y": 63
   },
-  "indoorequal-castle": {
+  "indoorequal-car_rental": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
     "x": 63,
     "y": 63
   },
-  "indoorequal-cemetery": {
+  "indoorequal-castle": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
     "x": 84,
+    "y": 0
+  },
+  "indoorequal-cemetery": {
+    "height": 21,
+    "pixelRatio": 1,
+    "width": 21,
+    "x": 105,
     "y": 0
   },
   "indoorequal-cinema": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 105,
+    "x": 126,
     "y": 0
   },
   "indoorequal-clothing_store": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 126,
+    "x": 147,
     "y": 0
   },
   "indoorequal-college": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 147,
-    "y": 0
+    "x": 84,
+    "y": 21
   },
   "indoorequal-craft": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 84,
+    "x": 105,
     "y": 21
   },
   "indoorequal-defibrillator": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 105,
+    "x": 126,
     "y": 21
   },
   "indoorequal-doctors": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 126,
+    "x": 147,
     "y": 21
   },
   "indoorequal-drinks": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 147,
-    "y": 21
+    "x": 84,
+    "y": 42
   },
   "indoorequal-elevator": {
     "height": 18,
     "pixelRatio": 1,
     "width": 18,
-    "x": 249,
+    "x": 270,
     "y": 0
   },
   "indoorequal-entrance": {
     "height": 17,
     "pixelRatio": 1,
     "width": 17,
-    "x": 303,
-    "y": 0
+    "x": 168,
+    "y": 21
   },
   "indoorequal-escalator": {
     "height": 18,
     "pixelRatio": 1,
     "width": 18,
-    "x": 267,
+    "x": 288,
     "y": 0
   },
   "indoorequal-exhibit": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 84,
+    "x": 105,
     "y": 42
   },
   "indoorequal-fast_food": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 105,
+    "x": 126,
     "y": 42
   },
   "indoorequal-food": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 126,
+    "x": 147,
     "y": 42
   },
   "indoorequal-golf": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 147,
-    "y": 42
+    "x": 84,
+    "y": 63
   },
   "indoorequal-greengrocer": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 84,
+    "x": 105,
     "y": 63
   },
   "indoorequal-grocery": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 105,
+    "x": 126,
     "y": 63
   },
   "indoorequal-hairdresser": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 126,
+    "x": 147,
     "y": 63
   },
   "indoorequal-harbor": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 147,
-    "y": 63
+    "x": 0,
+    "y": 84
   },
   "indoorequal-hospital": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 0,
+    "x": 21,
     "y": 84
   },
   "indoorequal-information": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 21,
+    "x": 42,
     "y": 84
   },
   "indoorequal-laundry": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 42,
+    "x": 63,
     "y": 84
   },
   "indoorequal-library": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 63,
+    "x": 84,
     "y": 84
   },
   "indoorequal-lodging": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 84,
+    "x": 105,
     "y": 84
   },
   "indoorequal-museum": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 105,
+    "x": 126,
     "y": 84
   },
   "indoorequal-music": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 126,
+    "x": 147,
     "y": 84
   },
   "indoorequal-newspapers": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 147,
-    "y": 84
+    "x": 0,
+    "y": 105
   },
   "indoorequal-park": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 0,
+    "x": 21,
     "y": 105
   },
   "indoorequal-parking": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 21,
+    "x": 42,
     "y": 105
   },
   "indoorequal-pastry": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 42,
+    "x": 63,
     "y": 105
   },
   "indoorequal-pharmacy": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 63,
+    "x": 84,
     "y": 105
   },
   "indoorequal-photos": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 84,
+    "x": 105,
     "y": 105
   },
   "indoorequal-piano": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 105,
+    "x": 126,
     "y": 105
   },
   "indoorequal-place_of_worship": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 126,
+    "x": 147,
     "y": 105
   },
   "indoorequal-police": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 147,
-    "y": 105
+    "x": 0,
+    "y": 126
   },
   "indoorequal-post": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 0,
+    "x": 21,
     "y": 126
   },
   "indoorequal-public_transport_tickets": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 21,
+    "x": 42,
     "y": 126
   },
   "indoorequal-railway": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 42,
+    "x": 63,
     "y": 126
   },
   "indoorequal-restaurant": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 63,
+    "x": 84,
     "y": 126
   },
   "indoorequal-school": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 84,
+    "x": 105,
     "y": 126
   },
   "indoorequal-seafood": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 105,
+    "x": 126,
     "y": 126
   },
   "indoorequal-shelter": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 126,
+    "x": 147,
     "y": 126
   },
   "indoorequal-shop": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
-    "x": 147,
-    "y": 126
-  },
-  "indoorequal-soccer": {
-    "height": 21,
-    "pixelRatio": 1,
-    "width": 21,
     "x": 0,
     "y": 147
   },
-  "indoorequal-stadium": {
+  "indoorequal-soccer": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
     "x": 21,
     "y": 147
   },
-  "indoorequal-steps": {
-    "height": 18,
-    "pixelRatio": 1,
-    "width": 18,
-    "x": 285,
-    "y": 0
-  },
-  "indoorequal-swimming": {
+  "indoorequal-stadium": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
     "x": 42,
     "y": 147
   },
-  "indoorequal-table_soccer": {
+  "indoorequal-steps": {
+    "height": 18,
+    "pixelRatio": 1,
+    "width": 18,
+    "x": 306,
+    "y": 0
+  },
+  "indoorequal-swimming": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
     "x": 63,
     "y": 147
   },
-  "indoorequal-table_tennis": {
+  "indoorequal-table_soccer": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
     "x": 84,
     "y": 147
   },
-  "indoorequal-tea": {
+  "indoorequal-table_tennis": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
     "x": 105,
     "y": 147
   },
-  "indoorequal-telephone": {
+  "indoorequal-tea": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
     "x": 126,
     "y": 147
   },
-  "indoorequal-theatre": {
+  "indoorequal-telephone": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
     "x": 147,
     "y": 147
   },
-  "indoorequal-toilets": {
+  "indoorequal-theatre": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
     "x": 168,
     "y": 0
   },
-  "indoorequal-town_hall": {
+  "indoorequal-toilets": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
     "x": 189,
     "y": 0
   },
-  "indoorequal-vending_machine": {
+  "indoorequal-town_hall": {
     "height": 21,
     "pixelRatio": 1,
     "width": 21,
     "x": 210,
     "y": 0
   },
+  "indoorequal-vending_machine": {
+    "height": 21,
+    "pixelRatio": 1,
+    "width": 21,
+    "x": 231,
+    "y": 0
+  },
   "indoorequal-waste_basket": {
     "height": 11,
     "pixelRatio": 1,
     "width": 11,
-    "x": 320,
+    "x": 324,
     "y": 0
   }
 }
