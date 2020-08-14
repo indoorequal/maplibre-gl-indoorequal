@@ -15,6 +15,8 @@ It provides:
 
 ## Install
 
+The recommended version of **mapbox-gl** to use is the **1.12** (released in august 2020) or higher.
+
 **With NPM**
 
     npm install --save mapbox-gl-indoorequal
