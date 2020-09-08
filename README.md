@@ -239,6 +239,10 @@ Type: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
     yarn doc
 
+**Generate the sprite**
+
+    yarn sprite
+
 ## License
 
 BSD
