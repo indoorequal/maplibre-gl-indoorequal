@@ -1,4 +1,4 @@
-# Mapbox-gl-indoorequal ![build](https://img.shields.io/github/workflow/status/indoorequal/mapbox-gl-indoorequal/CI) [![npm](https://img.shields.io/npm/v/mapbox-gl-indoorequal)](https://www.npmjs.com/package/mapbox-gl-indoorequal)
+# mapbox-gl-indoorequal ![build](https://img.shields.io/github/workflow/status/indoorequal/mapbox-gl-indoorequal/CI) [![npm](https://img.shields.io/npm/v/mapbox-gl-indoorequal)](https://www.npmjs.com/package/mapbox-gl-indoorequal)
 
 mapbobx-gl-indoorequal is a [mapbox-gl.js][mapbox-gl] plugin to display indoor data from [indoor=][].
 
