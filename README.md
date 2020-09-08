@@ -80,7 +80,30 @@ indoorequal.loadSprite('/indoorequal');
 
 **Usage with [webpack](https://webpack.js.org/)**
 
-TODO
+Install the
+[copy-webpack-plugin](https://github.com/webpack-contrib/copy-webpack-plugin)
+package and add to your webpack config:
+
+```javascript
+const CopyPlugin = require('copy-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        { from: 'node_modules/mapbox-gl-indoorequal/sprite' },
+      ],
+    }),
+  ],
+};
+```
+
+Then load the sprite:
+
+```javascript
+const indoorequal = new IndoorEqual(map, { apiKey: 'myKey' });
+indoorequal.loadSprite('/indoorequal');
+```
 
 ## API
 
