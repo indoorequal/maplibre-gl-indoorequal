@@ -71,6 +71,22 @@ describe('findAllLevels', () => {
     ])).toEqual([1, 0, -1, -2]);
   });
 
+  it('ignore levels from indoor=level', () => {
+    expect(findAllLevels([
+      {
+        properties: {
+          level: 0
+        }
+      },
+      {
+        properties: {
+          class: 'level',
+          level: 1
+        }
+      }
+    ])).toEqual([0]);
+  });
+
   it('find zero levels', () => {
     expect(findAllLevels([])).toEqual([]);
   });

@@ -1,7 +1,11 @@
 export default function findAllLevels(features) {
   const levels = [];
   for (let i = 0; i < features.length; i++) {
-    const level = features[i].properties.level;
+    const feature = features[i];
+    if (feature.properties.class === 'level') {
+      continue;
+    }
+    const level = feature.properties.level;
     if (!levels.includes(level)) {
       levels.push(level);
     }
