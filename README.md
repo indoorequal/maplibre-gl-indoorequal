@@ -13,6 +13,11 @@ It provides:
 
 ![](./demo.gif)
 
+Discover:
+
+- the frontend: https://github.com/indoorequal/indoorequal.org
+- the backend: https://github.com/indoorequal/indoorequal
+
 ## Install
 
 The recommended version of **mapbox-gl** to use is the **1.12** (released in august 2020) or higher.
