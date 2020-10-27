@@ -15,8 +15,8 @@ It provides:
 
 Discover:
 
-- the frontend: https://github.com/indoorequal/indoorequal.org
-- the backend: https://github.com/indoorequal/indoorequal
+-   the frontend: <https://github.com/indoorequal/indoorequal.org>
+-   the backend: <https://github.com/indoorequal/indoorequal>
 
 ## Install
 
@@ -70,11 +70,9 @@ Install the
 [parcel-plugin-static-files-copy](https://github.com/elwin013/parcel-plugin-static-files-copy)
 package and add to your `package.json`:
 
-```
-"staticFiles": {
-  "staticPath": "node_modules/mapbox-gl-indoorequal/sprite"
-},
-```
+    "staticFiles": {
+      "staticPath": "node_modules/mapbox-gl-indoorequal/sprite"
+    },
 
 Then load the sprite:
 
@@ -144,7 +142,7 @@ Load the indoor= source and layers in your map.
 -   `options` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
     -   `options.url` **[url](https://developer.mozilla.org/docs/Web/API/URL/URL)?** Override the default tiles URL (<https://tiles.indoorequal.org/>).
     -   `options.apiKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** The API key if you use the default tile URL (get your free key at [indoorequal.com](https://indoorequal.com)).
-    -   `options.layers` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)?** The layers to be used to style indoor= tiles.
+    -   `options.layers` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)?** The layers to be used to style indoor= tiles. Take a look a the [layers.js file](https://github.com/indoorequal/mapbox-gl-indoorequal/blob/master/src/layers.js) file and the [vector schema](https://indoorequal.com/schema)
 
 #### Properties
 
@@ -253,4 +251,5 @@ Type: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 BSD
 
 [indoor=]: https://indoorequal.org/
+
 [mapbox-gl]: https://github.com/mapbox/mapbox-gl-js

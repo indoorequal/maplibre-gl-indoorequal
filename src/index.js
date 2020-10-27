@@ -13,7 +13,7 @@ const SOURCE_ID = 'indoorequal';
  * @param {object} options
  * @param {url} [options.url] Override the default tiles URL (https://tiles.indoorequal.org/).
  * @param {string} [options.apiKey] The API key if you use the default tile URL (get your free key at [indoorequal.com](https://indoorequal.com)).
- * @param {array} [options.layers] The layers to be used to style indoor= tiles.
+ * @param {array} [options.layers] The layers to be used to style indoor= tiles. Take a look a the [layers.js file](https://github.com/indoorequal/mapbox-gl-indoorequal/blob/master/src/layers.js) file and the [vector schema](https://indoorequal.com/schema)
  * @property {string} level The current level displayed
  * @property {array} levels  The levels that can be displayed in the current view
  * @fires IndoorEqual#levelschange
