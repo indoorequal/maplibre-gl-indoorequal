@@ -150,7 +150,9 @@ export default class IndoorEqual {
   }
 
   _updateFilters() {
-    this.layers.forEach((layer) => {
+    this.layers
+    .filter(layer => layer.type !== "heatmap")
+    .forEach((layer) => {
       this.map.setFilter(layer.id, [ ...layer.filter || ['all'], ['==', 'level', this.level]]);
     });
   }

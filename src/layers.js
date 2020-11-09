@@ -249,6 +249,31 @@ export const layers = [
     ]
   },
   {
+    id: "indoor-heat",
+    "type": "heatmap",
+    "source-layer": "heat",
+    "filter": [ "all" ],
+    "paint": {
+      "heatmap-color": ["interpolate", ["linear"], ["heatmap-density"],
+        0, "rgba(198, 40, 40, 0)",
+        0.1, "rgba(198, 40, 40, 0.1)",
+        1, "rgba(198, 40, 40, 0.7)"
+      ],
+      "heatmap-radius": [
+        "interpolate", ["linear"], ["zoom"],
+        0, 3,
+        13, 20,
+        17, 40
+      ],
+      "heatmap-intensity": 1,
+      "heatmap-opacity": [
+        "interpolate", ["linear"], ["zoom"],
+        16, 1,
+        17.1, 0
+      ]
+    }
+  },
+  {
     id: "indoor-name",
     "type": "symbol",
     "source-layer": "area_name",
