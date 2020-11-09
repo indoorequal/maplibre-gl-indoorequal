@@ -232,7 +232,7 @@ Type: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 **Run tests**
 
-    yarn test
+    yarn test [--watch]
 
 **Build a new version**
 
