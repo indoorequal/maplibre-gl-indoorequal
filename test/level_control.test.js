@@ -39,13 +39,6 @@ describe('LevelControl', () => {
     expect(control.$el.querySelectorAll('button').length).toEqual(3);
   });
 
-  it('render no levels if only one is available', () => {
-    const levels = ['0'];
-    indoorEqual.levels = levels;
-    const control = new LevelControl(indoorEqual);
-    expect(control.$el.querySelectorAll('button').length).toEqual(0);
-  });
-
   it('a click on the button update the level', () => {
     indoorEqual.levels = ['1', '0'];
     indoorEqual.setLevel = jest.fn();

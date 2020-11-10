@@ -18,9 +18,6 @@ export default class LevelControl {
 
   _refresh() {
     this.$el.innerHTML = '';
-    if (this.indoorequal.levels.length === 1) {
-      return;
-    }
     const buttons = this.indoorequal.levels.map((level) => {
       const button = document.createElement('button');
       const strong = document.createElement('strong');
