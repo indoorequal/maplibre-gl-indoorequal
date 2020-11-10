@@ -255,9 +255,9 @@ export const layers = [
     "filter": [ "all" ],
     "paint": {
       "heatmap-color": ["interpolate", ["linear"], ["heatmap-density"],
-        0, "rgba(198, 40, 40, 0)",
-        0.1, "rgba(198, 40, 40, 0.1)",
-        1, "rgba(198, 40, 40, 0.7)"
+        0, "rgba(102, 103, 173, 0)",
+        0.1, "rgba(102, 103, 173, 0.2)",
+        1, "rgba(102, 103, 173, 0.7)"
       ],
       "heatmap-radius": [
         "interpolate", ["linear"], ["zoom"],

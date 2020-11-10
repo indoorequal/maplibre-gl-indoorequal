@@ -129,8 +129,10 @@ indoorequal.loadSprite('/indoorequal');
         -   [Parameters](#parameters-4)
     -   [loadSprite](#loadsprite)
         -   [Parameters](#parameters-5)
--   [IndoorEqual#levelschange](#indoorequallevelschange)
+    -   [setHeatmapVisible](#setheatmapvisible)
+        -   [Parameters](#parameters-6)
 -   [IndoorEqual#levelchange](#indoorequallevelchange)
+-   [IndoorEqual#levelschange](#indoorequallevelschange)
 
 ### IndoorEqual
 
@@ -212,17 +214,25 @@ Load a sprite and add all images to the map
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** It resolves an hash of images.
 
-### IndoorEqual#levelschange
+#### setHeatmapVisible
 
-Emitted when the list of available levels has been updated
+Change the heatmap layer visibility
 
-Type: [array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)
+##### Parameters
+
+-   `visible` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** True to make it visible, false to hide it
 
 ### IndoorEqual#levelchange
 
 Emitted when the list of available levels has been updated
 
 Type: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+### IndoorEqual#levelschange
+
+Emitted when the list of available levels has been updated
+
+Type: [array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
 ## Develop
 
