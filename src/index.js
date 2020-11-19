@@ -129,6 +129,14 @@ export default class IndoorEqual {
       });
   }
 
+  /**
+   * Change the heatmap layer visibility
+   * @param {boolean} visible True to make it visible, false to hide it
+   */
+  setHeatmapVisible(visible) {
+    this.map.setLayoutProperty("indoor-heat", "visibility", visible ? "visible" : "none");
+  }
+
   _addSource() {
     const queryParams = this.apiKey ? `?key=${this.apiKey}` : '';
     this.map.addSource(SOURCE_ID, {
@@ -150,7 +158,9 @@ export default class IndoorEqual {
   }
 
   _updateFilters() {
-    this.layers.forEach((layer) => {
+    this.layers
+    .filter(layer => layer.type !== "heatmap")
+    .forEach((layer) => {
       this.map.setFilter(layer.id, [ ...layer.filter || ['all'], ['==', 'level', this.level]]);
     });
   }

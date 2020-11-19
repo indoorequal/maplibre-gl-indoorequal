@@ -13,6 +13,7 @@ describe('IndoorEqual', () => {
   let addSource;
   let addLayer;
   let setFilter;
+  let setLayoutProperty;
   let on;
 
   beforeEach(() => {
@@ -21,9 +22,11 @@ describe('IndoorEqual', () => {
     addSource = jest.fn();
     addLayer = jest.fn();
     setFilter = jest.fn();
+    setLayoutProperty = jest.fn();
     map.addSource = addSource;
     map.addLayer = addLayer;
     map.setFilter = setFilter;
+    map.setLayoutProperty = setLayoutProperty;
     map.on = (name, fn) => { on[name] = fn};
     map.isStyleLoaded = () => false;
   });
@@ -33,7 +36,7 @@ describe('IndoorEqual', () => {
     const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     expect(addSource.mock.calls.length).toEqual(1);
     expect(addSource.mock.calls[0]).toEqual(['indoorequal', { type: 'vector', url: 'https://tiles.indoorequal.org/?key=myapikey' }]);
-    expect(addLayer.mock.calls.length).toEqual(9);
+    expect(addLayer.mock.calls.length).toEqual(10);
     expect(setFilter.mock.calls.length).toEqual(9);
   });
 
@@ -58,7 +61,7 @@ describe('IndoorEqual', () => {
     expect(setFilter.mock.calls.length).toEqual(0);
     on.load();
     expect(addSource.mock.calls.length).toEqual(1);
-    expect(addLayer.mock.calls.length).toEqual(9);
+    expect(addLayer.mock.calls.length).toEqual(10);
     expect(setFilter.mock.calls.length).toEqual(9);
   });
 
@@ -177,6 +180,17 @@ describe('IndoorEqual', () => {
     indoorEqual.levels = ['0'];
     indoorEqual._refreshAfterLevelsUpdate();
     expect(indoorEqual.level).toEqual('0');
+  });
+
+  it('changes heatmap visibility', () => {
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
+    expect(setLayoutProperty.mock.calls.length).toEqual(0);
+    indoorEqual.setHeatmapVisible(false);
+    expect(setLayoutProperty.mock.calls.length).toEqual(1);
+    expect(setLayoutProperty.mock.calls[0]).toEqual(["indoor-heat", "visibility", "none"]);
+    indoorEqual.setHeatmapVisible(true);
+    expect(setLayoutProperty.mock.calls.length).toEqual(2);
+    expect(setLayoutProperty.mock.calls[1]).toEqual(["indoor-heat", "visibility", "visible"]);
   });
 
   it('allows to remove an event listener', () => {
