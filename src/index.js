@@ -32,7 +32,7 @@ export default class IndoorEqual {
     this.apiKey = opts.apiKey;
     this.layers = opts.layers;
     this.levels = [];
-    this.level = "0";
+    this.level = '0';
     this.events = {};
 
     if (this.map.isStyleLoaded()) {
@@ -134,7 +134,7 @@ export default class IndoorEqual {
    * @param {boolean} visible True to make it visible, false to hide it
    */
   setHeatmapVisible(visible) {
-    this.map.setLayoutProperty("indoor-heat", "visibility", visible ? "visible" : "none");
+    this.map.setLayoutProperty('indoor-heat', 'visibility', visible ? 'visible' : 'none');
   }
 
   _addSource() {
@@ -159,7 +159,7 @@ export default class IndoorEqual {
 
   _updateFilters() {
     this.layers
-    .filter(layer => layer.type !== "heatmap")
+    .filter(layer => layer.type !== 'heatmap')
     .forEach((layer) => {
       this.map.setFilter(layer.id, [ ...layer.filter || ['all'], ['==', 'level', this.level]]);
     });
