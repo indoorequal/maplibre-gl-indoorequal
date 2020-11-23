@@ -187,10 +187,10 @@ describe('IndoorEqual', () => {
     expect(setLayoutProperty.mock.calls.length).toEqual(0);
     indoorEqual.setHeatmapVisible(false);
     expect(setLayoutProperty.mock.calls.length).toEqual(1);
-    expect(setLayoutProperty.mock.calls[0]).toEqual(["indoor-heat", "visibility", "none"]);
+    expect(setLayoutProperty.mock.calls[0]).toEqual(['indoor-heat', 'visibility', 'none']);
     indoorEqual.setHeatmapVisible(true);
     expect(setLayoutProperty.mock.calls.length).toEqual(2);
-    expect(setLayoutProperty.mock.calls[1]).toEqual(["indoor-heat", "visibility", "visible"]);
+    expect(setLayoutProperty.mock.calls[1]).toEqual(['indoor-heat', 'visibility', 'visible']);
   });
 
   it('allows to remove an event listener', () => {
