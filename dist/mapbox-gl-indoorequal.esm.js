@@ -493,6 +493,7 @@ const SOURCE_ID = 'indoorequal';
  * @param {url} [options.url] Override the default tiles URL (https://tiles.indoorequal.org/).
  * @param {string} [options.apiKey] The API key if you use the default tile URL (get your free key at [indoorequal.com](https://indoorequal.com)).
  * @param {array} [options.layers] The layers to be used to style indoor= tiles. Take a look a the [layers.js file](https://github.com/indoorequal/mapbox-gl-indoorequal/blob/master/src/layers.js) file and the [vector schema](https://indoorequal.com/schema)
+ * @param {boolean} [options.heatmap] Should the heatmap layer be visible at start (true : visible, false : hidden). Defaults to true/visible.
  * @property {string} level The current level displayed
  * @property {array} levels  The levels that can be displayed in the current view
  * @fires IndoorEqual#levelschange
@@ -501,7 +502,7 @@ const SOURCE_ID = 'indoorequal';
  */
 class IndoorEqual {
   constructor(map, options = {}) {
-    const defaultOpts = { url: 'https://tiles.indoorequal.org/', layers };
+    const defaultOpts = { url: 'https://tiles.indoorequal.org/', layers, heatmap: true };
     const opts = { ...defaultOpts, ...options };
     if (opts.url === defaultOpts.url && !opts.apiKey) {
       throw 'You must register your apiKey at https://indoorequal.com before and set it as apiKey param.';
@@ -511,13 +512,17 @@ class IndoorEqual {
     this.apiKey = opts.apiKey;
     this.layers = opts.layers;
     this.levels = [];
-    this.level = "0";
+    this.level = '0';
     this.events = {};
 
     if (this.map.isStyleLoaded()) {
       this._addSource();
+      this.setHeatmapVisible(opts.heatmap);
     } else {
-      this.map.on('load', this._addSource.bind(this));
+      this.map.on('load', () => {
+        this._addSource();
+        this.setHeatmapVisible(opts.heatmap);
+      });
     }
   }
 
@@ -613,7 +618,7 @@ class IndoorEqual {
    * @param {boolean} visible True to make it visible, false to hide it
    */
   setHeatmapVisible(visible) {
-    this.map.setLayoutProperty("indoor-heat", "visibility", visible ? "visible" : "none");
+    this.map.setLayoutProperty('indoor-heat', 'visibility', visible ? 'visible' : 'none');
   }
 
   _addSource() {
@@ -638,7 +643,7 @@ class IndoorEqual {
 
   _updateFilters() {
     this.layers
-    .filter(layer => layer.type !== "heatmap")
+    .filter(layer => layer.type !== 'heatmap')
     .forEach((layer) => {
       this.map.setFilter(layer.id, [ ...layer.filter || ['all'], ['==', 'level', this.level]]);
     });
