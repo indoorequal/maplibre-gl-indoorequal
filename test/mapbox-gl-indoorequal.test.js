@@ -193,6 +193,13 @@ describe('IndoorEqual', () => {
     expect(setLayoutProperty.mock.calls[1]).toEqual(['indoor-heat', 'visibility', 'visible']);
   });
 
+  it('changes heatmap visibility at start', () => {
+    map.isStyleLoaded = () => true;
+    const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey', heatmap: false });
+    expect(setLayoutProperty.mock.calls.length).toEqual(1);
+    expect(setLayoutProperty.mock.calls[0]).toEqual(['indoor-heat', 'visibility', 'none']);
+  });
+
   it('allows to remove an event listener', () => {
     const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     indoorEqual.levels = ['1', '0'];
