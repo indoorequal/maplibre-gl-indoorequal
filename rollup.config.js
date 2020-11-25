@@ -26,7 +26,7 @@ export default [
     input,
     external: ['debounce', 'array-equal'],
     output: [
-      { file: pkg.main, format: 'cjs' },
+      { file: pkg.main, format: 'cjs', exports: 'default' },
       { file: pkg.module, format: 'es' }
     ]
   }
