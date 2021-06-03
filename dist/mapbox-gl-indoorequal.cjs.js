@@ -43,7 +43,7 @@ class LevelControl {
 
   _refresh() {
     this.$el.innerHTML = '';
-    const buttons = this.indoorequal.levels.map((level) => {
+    this.indoorequal.levels.forEach((level) => {
       const button = document.createElement('button');
       const strong = document.createElement('strong');
       strong.textContent = level;
