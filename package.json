@@ -16,23 +16,18 @@
     "sprite": "spritezero ./sprite/indoorequal ./mapicons && spritezero --retina ./sprite/indoorequal@2x ./mapicons"
   },
   "jest": {
-    "moduleFileExtensions": [
-      "js"
-    ],
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    }
+   "testEnvironment": "jsdom"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@mapbox/spritezero-cli": "https://github.com/francois2metz/spritezero-cli",
     "@rollup/plugin-babel": "^5.0.0",
-    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
-    "babel-jest": "^26.0",
+    "babel-jest": "^27.0.6",
     "documentation": "^13.2.5",
-    "jest": "^26.0",
+    "jest": "^27.0.6",
     "rollup": "^2.7.6",
     "rollup-plugin-terser": "^7.0.2"
   },
