@@ -209,7 +209,7 @@ export default class IndoorEqual {
  */
 
 /**
- * Emitted when the list of available levels has been updated
+ * Emitted when the current level has been updated
  *
  * @event IndoorEqual#levelchange
  * @type {string} always emitted when the level displayed has changed
