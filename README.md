@@ -4,10 +4,10 @@ mapbox-gl-indoorequal is a [mapbox-gl.js][mapbox-gl] plugin to display indoor da
 
 It provides:
 
--   a default style of the indoor tiles
--   a way to customize the style and load your sprites
--   a level control to change the level displayed on the map
--   a programatic API to list the levels available and set the level displayed
+*   a default style of the indoor tiles
+*   a way to customize the style and load your sprites
+*   a level control to change the level displayed on the map
+*   a programatic API to list the levels available and set the level displayed
 
 [**See the demo**](https://indoorequal.github.io/mapbox-gl-indoorequal).
 
@@ -15,8 +15,8 @@ It provides:
 
 Discover:
 
--   the frontend: <https://github.com/indoorequal/indoorequal.org>
--   the backend: <https://github.com/indoorequal/indoorequal>
+*   the frontend: <https://github.com/indoorequal/indoorequal.org>
+*   the backend: <https://github.com/indoorequal/indoorequal>
 
 ## Install
 
@@ -114,25 +114,25 @@ indoorequal.loadSprite('/indoorequal');
 
 #### Table of Contents
 
--   [IndoorEqual](#indoorequal)
-    -   [Parameters](#parameters)
-    -   [Properties](#properties)
-    -   [on](#on)
-        -   [Parameters](#parameters-1)
-    -   [off](#off)
-        -   [Parameters](#parameters-2)
-    -   [onAdd](#onadd)
-    -   [onRemove](#onremove)
-    -   [setLevel](#setlevel)
-        -   [Parameters](#parameters-3)
-    -   [updateLevel](#updatelevel)
-        -   [Parameters](#parameters-4)
-    -   [loadSprite](#loadsprite)
-        -   [Parameters](#parameters-5)
-    -   [setHeatmapVisible](#setheatmapvisible)
-        -   [Parameters](#parameters-6)
--   [IndoorEqual#levelschange](#indoorequallevelschange)
--   [IndoorEqual#levelchange](#indoorequallevelchange)
+*   [IndoorEqual](#indoorequal)
+    *   [Parameters](#parameters)
+    *   [Properties](#properties)
+    *   [on](#on)
+        *   [Parameters](#parameters-1)
+    *   [off](#off)
+        *   [Parameters](#parameters-2)
+    *   [onAdd](#onadd)
+    *   [onRemove](#onremove)
+    *   [setLevel](#setlevel)
+        *   [Parameters](#parameters-3)
+    *   [updateLevel](#updatelevel)
+        *   [Parameters](#parameters-4)
+    *   [loadSprite](#loadsprite)
+        *   [Parameters](#parameters-5)
+    *   [setHeatmapVisible](#setheatmapvisible)
+        *   [Parameters](#parameters-6)
+*   [IndoorEqual#levelschange](#indoorequallevelschange)
+*   [IndoorEqual#levelchange](#indoorequallevelchange)
 
 ### IndoorEqual
 
@@ -140,17 +140,18 @@ Load the indoor= source and layers in your map.
 
 #### Parameters
 
--   `map` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the mapbox-gl instance of the map
--   `options` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
-    -   `options.url` **[url](https://developer.mozilla.org/docs/Web/API/URL/URL)?** Override the default tiles URL (<https://tiles.indoorequal.org/>).
-    -   `options.apiKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** The API key if you use the default tile URL (get your free key at [indoorequal.com](https://indoorequal.com)).
-    -   `options.layers` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)?** The layers to be used to style indoor= tiles. Take a look a the [layers.js file](https://github.com/indoorequal/mapbox-gl-indoorequal/blob/master/src/layers.js) file and the [vector schema](https://indoorequal.com/schema)
-    -   `options.heatmap` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** Should the heatmap layer be visible at start (true : visible, false : hidden). Defaults to true/visible.
+*   `map` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the mapbox-gl instance of the map
+*   `options` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
+
+    *   `options.url` **[url](https://developer.mozilla.org/docs/Web/API/URL/URL)?** Override the default tiles URL (<https://tiles.indoorequal.org/>).
+    *   `options.apiKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** The API key if you use the default tile URL (get your free key at [indoorequal.com](https://indoorequal.com)).
+    *   `options.layers` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)?** The layers to be used to style indoor= tiles. Take a look a the [layers.js file](https://github.com/indoorequal/mapbox-gl-indoorequal/blob/master/src/layers.js) file and the [vector schema](https://indoorequal.com/schema)
+    *   `options.heatmap` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** Should the heatmap layer be visible at start (true : visible, false : hidden). Defaults to true/visible.
 
 #### Properties
 
--   `level` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The current level displayed
--   `levels` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** The levels that can be displayed in the current view
+*   `level` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The current level displayed
+*   `levels` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** The levels that can be displayed in the current view
 
 Returns **[IndoorEqual](#indoorequal)** `this`
 
@@ -160,8 +161,8 @@ Add an event listener
 
 ##### Parameters
 
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the name of the event
--   `fn` **[function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** the function to be called when the event is emitted
+*   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the name of the event
+*   `fn` **[function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** the function to be called when the event is emitted
 
 #### off
 
@@ -169,8 +170,8 @@ Remove an event listener.
 
 ##### Parameters
 
--   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the name of the event
--   `fn` **[function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** the same function when on() was called
+*   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the name of the event
+*   `fn` **[function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** the same function when on() was called
 
 #### onAdd
 
@@ -188,7 +189,7 @@ Set the displayed level.
 
 ##### Parameters
 
--   `level` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the level to be displayed
+*   `level` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the level to be displayed
 
 #### updateLevel
 
@@ -196,12 +197,11 @@ Set the displayed level.
 
 ##### Parameters
 
--   `level` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the level to be displayed
+*   `level` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the level to be displayed
 
 **Meta**
 
--   **deprecated**: Use setLevel instead
-
+*   **deprecated**: Use setLevel instead
 
 #### loadSprite
 
@@ -209,9 +209,10 @@ Load a sprite and add all images to the map
 
 ##### Parameters
 
--   `baseUrl` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the baseUrl where to load the sprite
--   `options` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
-    -   `options.update` **[url](https://developer.mozilla.org/docs/Web/API/URL/URL)?** Update existing image (default false)
+*   `baseUrl` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** the baseUrl where to load the sprite
+*   `options` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
+
+    *   `options.update` **[url](https://developer.mozilla.org/docs/Web/API/URL/URL)?** Update existing image (default false)
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** It resolves an hash of images.
 
@@ -221,7 +222,7 @@ Change the heatmap layer visibility
 
 ##### Parameters
 
--   `visible` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** True to make it visible, false to hide it
+*   `visible` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** True to make it visible, false to hide it
 
 ### IndoorEqual#levelschange
 
@@ -231,7 +232,7 @@ Type: [array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global
 
 ### IndoorEqual#levelchange
 
-Emitted when the list of available levels has been updated
+Emitted when the current level has been updated
 
 Type: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)
 
