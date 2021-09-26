@@ -16,7 +16,7 @@
     "sprite": "spritezero ./sprite/indoorequal ./mapicons && spritezero --retina ./sprite/indoorequal@2x ./mapicons"
   },
   "jest": {
-   "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
