@@ -18,7 +18,7 @@ export default [
       resolve(),
       commonjs(),
       terser(),
-      babel()
+      babel({ babelHelpers: 'bundled' }),
     ]
   },
 
