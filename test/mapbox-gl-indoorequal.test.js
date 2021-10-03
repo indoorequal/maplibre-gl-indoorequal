@@ -6,7 +6,7 @@ jest.mock('../src/sprite', () => {
   };
 });
 
-import IndoorEqual, { findAllLevels }  from '../src/index';
+import IndoorEqual from '../src/index';
 
 describe('IndoorEqual', () => {
   let map;
