@@ -12,6 +12,7 @@ describe('IndoorEqual', () => {
   let map;
   let addSource;
   let addLayer;
+  let getLayer;
   let setFilter;
   let setLayoutProperty;
   let on;
@@ -21,10 +22,12 @@ describe('IndoorEqual', () => {
     on = {};
     addSource = jest.fn();
     addLayer = jest.fn();
+    getLayer = jest.fn();
     setFilter = jest.fn();
     setLayoutProperty = jest.fn();
     map.addSource = addSource;
     map.addLayer = addLayer;
+    map.getLayer = getLayer;
     map.setFilter = setFilter;
     map.setLayoutProperty = setLayoutProperty;
     map.on = (name, fn) => { on[name] = fn};
@@ -51,6 +54,16 @@ describe('IndoorEqual', () => {
     expect(() => {
       const indoorEqual = new IndoorEqual(map);
     }).toThrow('You must register your apiKey at https://indoorequal.com before and set it as apiKey param.');
+  });
+
+  it('allows to set geojson data', () => {
+    map.isStyleLoaded = () => true;
+    const indoorEqual = new IndoorEqual(map, { geojson: { area: { id: 1 }, area_name: { id: 2} } });
+    expect(addSource.mock.calls.length).toEqual(2);
+    expect(addSource.mock.calls[0]).toEqual(['indoorequal_area', { type: 'geojson', data: { id: 1 } }]);
+    expect(addSource.mock.calls[1]).toEqual(['indoorequal_area_name', { type: 'geojson', data: { id: 2 } }]);
+    expect(addLayer.mock.calls.length).toEqual(5);
+    expect(setFilter.mock.calls.length).toEqual(5);
   });
 
   it('load the source and the layers once the map style is loaded', () => {
@@ -183,6 +196,7 @@ describe('IndoorEqual', () => {
   });
 
   it('changes heatmap visibility', () => {
+    getLayer.mockReturnValue(true);
     const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     expect(setLayoutProperty.mock.calls.length).toEqual(0);
     indoorEqual.setHeatmapVisible(false);
@@ -195,6 +209,7 @@ describe('IndoorEqual', () => {
 
   it('changes heatmap visibility at start', () => {
     map.isStyleLoaded = () => true;
+    getLayer.mockReturnValue(true);
     const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey', heatmap: false });
     expect(setLayoutProperty.mock.calls.length).toEqual(1);
     expect(setLayoutProperty.mock.calls[0]).toEqual(['indoor-heat', 'visibility', 'none']);
