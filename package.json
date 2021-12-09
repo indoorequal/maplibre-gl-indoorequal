@@ -1,6 +1,6 @@
 {
   "name": "mapbox-gl-indoorequal",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Integrate indoor= into your mapbox-gl.js map.",
   "repository": "https://github.com/indoorequal/mapbox-gl-indoorequal",
   "author": "François de Metz",

@@ -491,13 +491,80 @@ function loadSprite(baseUrl) {
     });
 }
 
-const SOURCE_ID = 'indoorequal';
+class GeoJSONSource {
+  constructor(map, options = {}) {
+    const defaultOpts = { layers, geojson: {} };
+    const opts = { ...defaultOpts, ...options };
+    this.map = map;
+    this.geojson = opts.geojson;
+    this.layers = opts.layers;
+    this.baseSourceId = 'indoorequal';
+    this.sourceId = `${this.baseSourceId}_area`;
+  }
+
+  addSource() {
+    Object.keys(this.geojson).forEach((layerName) => {
+      this.map.addSource(`${this.baseSourceId}_${layerName}`, {
+        type: 'geojson',
+        data: this.geojson[layerName]
+      });
+    });
+  }
+
+  addLayers() {
+    const sourceLayers = Object.keys(this.geojson);
+    const layers = this.layers;
+    this.layers = layers.filter((layer) => {
+      return sourceLayers.includes(layer['source-layer']);
+    });
+    this.layers.forEach((layer) => {
+      this.map.addLayer({
+        source: `${this.baseSourceId}_${layer['source-layer']}`,
+        ...layer,
+        'source-layer': ''
+      });
+    });
+  }
+}
+
+class VectorTileSource {
+  constructor(map, options = {}) {
+    const defaultOpts = { url: 'https://tiles.indoorequal.org/', layers };
+    const opts = { ...defaultOpts, ...options };
+    if (opts.url === defaultOpts.url && !opts.apiKey) {
+      throw 'You must register your apiKey at https://indoorequal.com before and set it as apiKey param.';
+    }
+    this.map = map;
+    this.url = opts.url;
+    this.apiKey = opts.apiKey;
+    this.layers = opts.layers;
+    this.sourceId = 'indoorequal';
+  }
+
+  addSource() {
+    const queryParams = this.apiKey ? `?key=${this.apiKey}` : '';
+    this.map.addSource(this.sourceId, {
+      type: 'vector',
+      url: `${this.url}${queryParams}`
+    });
+  }
+
+  addLayers() {
+    this.layers.forEach((layer) => {
+      this.map.addLayer({
+        source: this.sourceId,
+        ...layer
+      });
+    });
+  }
+}
 
 /**
  * Load the indoor= source and layers in your map.
  * @param {object} map the mapbox-gl instance of the map
  * @param {object} options
- * @param {url} [options.url] Override the default tiles URL (https://tiles.indoorequal.org/).
+ * @param {string} [options.url] Override the default tiles URL (https://tiles.indoorequal.org/).
+ * @param {object} [options.geojson] GeoJSON data with with key as layer name and value with geojson features
  * @param {string} [options.apiKey] The API key if you use the default tile URL (get your free key at [indoorequal.com](https://indoorequal.com)).
  * @param {array} [options.layers] The layers to be used to style indoor= tiles. Take a look a the [layers.js file](https://github.com/indoorequal/mapbox-gl-indoorequal/blob/master/src/layers.js) file and the [vector schema](https://indoorequal.com/schema)
  * @param {boolean} [options.heatmap] Should the heatmap layer be visible at start (true : visible, false : hidden). Defaults to true/visible.
@@ -509,15 +576,11 @@ const SOURCE_ID = 'indoorequal';
  */
 class IndoorEqual {
   constructor(map, options = {}) {
-    const defaultOpts = { url: 'https://tiles.indoorequal.org/', layers, heatmap: true };
+    const SourceKlass = options.geojson ? GeoJSONSource : VectorTileSource;
+    const defaultOpts = { heatmap: true };
     const opts = { ...defaultOpts, ...options };
-    if (opts.url === defaultOpts.url && !opts.apiKey) {
-      throw 'You must register your apiKey at https://indoorequal.com before and set it as apiKey param.';
-    }
+    this.source = new SourceKlass(map, options);
     this.map = map;
-    this.url = opts.url;
-    this.apiKey = opts.apiKey;
-    this.layers = opts.layers;
     this.levels = [];
     this.level = '0';
     this.events = {};
@@ -601,7 +664,7 @@ class IndoorEqual {
    * Load a sprite and add all images to the map
    * @param {string} baseUrl the baseUrl where to load the sprite
    * @param {object} options
-   * @param {url} [options.update] Update existing image (default false)
+   * @param {boolean} [options.update] Update existing image (default false)
    * @return {Promise} It resolves an hash of images.
    */
   loadSprite(baseUrl, options = {}) {
@@ -625,31 +688,28 @@ class IndoorEqual {
    * @param {boolean} visible True to make it visible, false to hide it
    */
   setHeatmapVisible(visible) {
-    this.map.setLayoutProperty('indoor-heat', 'visibility', visible ? 'visible' : 'none');
+    if (this.map.getLayer('indoor-heat')) {
+      this.map.setLayoutProperty('indoor-heat', 'visibility', visible ? 'visible' : 'none');
+    }
   }
 
   _addSource() {
-    const queryParams = this.apiKey ? `?key=${this.apiKey}` : '';
-    this.map.addSource(SOURCE_ID, {
-      type: 'vector',
-      url: `${this.url}${queryParams}`
-    });
-    this.layers.forEach((layer) => {
-      this.map.addLayer({
-        source: SOURCE_ID,
-        ...layer
-      });
-    });
+    this.source.addSource();
+    this._addLayers();
     this._updateFilters();
-    const updateLevels = debounce__default['default'](this._updateLevels.bind(this), 1000);
+    const updateLevels = debounce__default["default"](this._updateLevels.bind(this), 1000);
 
     this.map.on('load', updateLevels);
     this.map.on('data', updateLevels);
     this.map.on('move', updateLevels);
   }
 
+  _addLayers() {
+    this.source.addLayers();
+  }
+
   _updateFilters() {
-    this.layers
+    this.source.layers
     .filter(layer => layer.type !== 'heatmap')
     .forEach((layer) => {
       this.map.setFilter(layer.id, [ ...layer.filter || ['all'], ['==', 'level', this.level]]);
@@ -663,10 +723,10 @@ class IndoorEqual {
   }
 
   _updateLevels() {
-    if (this.map.isSourceLoaded(SOURCE_ID)) {
-      const features = this.map.querySourceFeatures(SOURCE_ID, { sourceLayer: 'area' });
+    if (this.map.isSourceLoaded(this.source.sourceId)) {
+      const features = this.map.querySourceFeatures(this.source.sourceId, { sourceLayer: 'area' });
       const levels = findAllLevels(features);
-      if (!arrayEqual__default['default'](levels, this.levels)) {
+      if (!arrayEqual__default["default"](levels, this.levels)) {
         this.levels = levels;
         this._emitLevelsChange();
         this._refreshAfterLevelsUpdate();
@@ -695,7 +755,7 @@ class IndoorEqual {
  */
 
 /**
- * Emitted when the list of available levels has been updated
+ * Emitted when the current level has been updated
  *
  * @event IndoorEqual#levelchange
  * @type {string} always emitted when the level displayed has changed
