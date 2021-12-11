@@ -1,6 +1,6 @@
 # mapbox-gl-indoorequal ![build](https://img.shields.io/github/workflow/status/indoorequal/mapbox-gl-indoorequal/CI) [![npm](https://img.shields.io/npm/v/mapbox-gl-indoorequal)](https://www.npmjs.com/package/mapbox-gl-indoorequal)
 
-mapbox-gl-indoorequal is a [mapbox-gl.js][mapbox-gl] plugin to display indoor data from [indoor=][].
+mapbox-gl-indoorequal is a [maplibre-gl][] or [mapbox-gl.js][mapbox-gl] plugin to display indoor data from [indoor=][].
 
 It provides:
 
@@ -20,7 +20,10 @@ Discover:
 
 ## Install
 
-The recommended version of **mapbox-gl** to use is the **1.12** (released in august 2020) or higher.
+Recommended versions:
+
+- **mapbox-gl** to use is the **1.12** (released in august 2020) or higher
+- **maplibre-gl** **1.15.2**
 
 **With NPM**
 
@@ -264,5 +267,5 @@ Type: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 BSD
 
 [indoor=]: https://indoorequal.org/
-
+[maplibre-gl]: https://github.com/maplibre/maplibre-gl-js
 [mapbox-gl]: https://github.com/mapbox/mapbox-gl-js
