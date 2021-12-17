@@ -16,10 +16,12 @@ describe('IndoorEqual', () => {
   let setFilter;
   let setLayoutProperty;
   let on;
+  let once;
 
   beforeEach(() => {
     map = {};
     on = {};
+    once = {};
     addSource = jest.fn();
     addLayer = jest.fn();
     getLayer = jest.fn();
@@ -31,6 +33,7 @@ describe('IndoorEqual', () => {
     map.setFilter = setFilter;
     map.setLayoutProperty = setLayoutProperty;
     map.on = (name, fn) => { on[name] = fn};
+    map.once = (name, fn) => { once[name] = fn};
     map.isStyleLoaded = () => false;
   });
 
@@ -72,7 +75,7 @@ describe('IndoorEqual', () => {
     expect(addSource.mock.calls.length).toEqual(0);
     expect(addLayer.mock.calls.length).toEqual(0);
     expect(setFilter.mock.calls.length).toEqual(0);
-    on.load();
+    once.load();
     expect(addSource.mock.calls.length).toEqual(1);
     expect(addLayer.mock.calls.length).toEqual(10);
     expect(setFilter.mock.calls.length).toEqual(9);

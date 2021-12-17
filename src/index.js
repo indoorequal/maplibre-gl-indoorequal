@@ -103,7 +103,7 @@ export default class IndoorEqual {
       this._addSource();
       this.setHeatmapVisible(opts.heatmap);
     } else {
-      this.map.on('load', () => {
+      this.map.once('load', () => {
         this._addSource();
         this.setHeatmapVisible(opts.heatmap);
       });
