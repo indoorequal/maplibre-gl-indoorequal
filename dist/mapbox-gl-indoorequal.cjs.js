@@ -589,7 +589,7 @@ class IndoorEqual {
       this._addSource();
       this.setHeatmapVisible(opts.heatmap);
     } else {
-      this.map.on('load', () => {
+      this.map.once('load', () => {
         this._addSource();
         this.setHeatmapVisible(opts.heatmap);
       });
@@ -702,6 +702,11 @@ class IndoorEqual {
     this.map.on('load', updateLevels);
     this.map.on('data', updateLevels);
     this.map.on('move', updateLevels);
+    this.map.on('remove', () => {
+      this.map.off('load', updateLevels);
+      this.map.off('data', updateLevels);
+      this.map.off('move', updateLevels);
+    });
   }
 
   _addLayers() {
