@@ -4,6 +4,8 @@ mapbox-gl-indoorequal is a [maplibre-gl][] or [mapbox-gl.js][mapbox-gl] plugin t
 
 It provides:
 
+*   load vector tiles from indoorequal.org tile server or your own
+*   display GeoJSON data
 *   a default style of the indoor tiles
 *   a way to customize the style and load your sprites
 *   a level control to change the level displayed on the map
