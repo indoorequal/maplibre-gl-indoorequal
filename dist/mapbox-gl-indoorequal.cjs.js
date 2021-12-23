@@ -703,9 +703,7 @@ class IndoorEqual {
     this.map.on('data', updateLevels);
     this.map.on('move', updateLevels);
     this.map.on('remove', () => {
-      this.map.off('load', updateLevels);
-      this.map.off('data', updateLevels);
-      this.map.off('move', updateLevels);
+      updateLevels.clear();
     });
   }
 
