@@ -75,7 +75,7 @@ class VectorTileSource {
 
 /**
  * Load the indoor= source and layers in your map.
- * @param {object} map the mapbox-gl instance of the map
+ * @param {object} map the mapbox-gl/maplibre-gl instance of the map
  * @param {object} options
  * @param {string} [options.url] Override the default tiles URL (https://tiles.indoorequal.org/).
  * @param {object} [options.geojson] GeoJSON data with with key as layer name and value with geojson features
