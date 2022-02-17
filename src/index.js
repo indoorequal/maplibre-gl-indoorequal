@@ -39,6 +39,15 @@ class GeoJSONSource {
       });
     });
   }
+
+  remove() {
+    this.layers.forEach((layer) => {
+      this.map.removeLayer(layer.id);
+    });
+    Object.keys(this.geojson).forEach((layerName) => {
+      this.map.removeSource(`${this.baseSourceId}_${layerName}`);
+    });
+  }
 }
 
 class VectorTileSource {
@@ -70,6 +79,13 @@ class VectorTileSource {
         ...layer
       });
     });
+  }
+
+  remove() {
+    this.layers.forEach((layer) => {
+      this.map.removeLayer(layer.id);
+    });
+    this.map.removeSource(this.sourceId);
   }
 }
 
@@ -107,6 +123,20 @@ export default class IndoorEqual {
         this._addSource();
         this.setHeatmapVisible(opts.heatmap);
       });
+    }
+  }
+
+  /**
+   * Remove any layers, source and listeners and controls
+   */
+  remove() {
+    this.source.remove();
+    this._updateLevelsDebounce.clear();
+    this.map.off('load', this._updateLevelsDebounce);
+    this.map.off('data', this._updateLevelsDebounce);
+    this.map.off('move', this._updateLevelsDebounce);
+    if (this._control) {
+      this.onRemove();
     }
   }
 
@@ -211,13 +241,13 @@ export default class IndoorEqual {
     this.source.addSource();
     this._addLayers();
     this._updateFilters();
-    const updateLevels = debounce(this._updateLevels.bind(this), 1000);
+    this._updateLevelsDebounce = debounce(this._updateLevels.bind(this), 1000);
 
-    this.map.on('load', updateLevels);
-    this.map.on('data', updateLevels);
-    this.map.on('move', updateLevels);
+    this.map.on('load', this._updateLevelsDebounce);
+    this.map.on('data', this._updateLevelsDebounce);
+    this.map.on('move', this._updateLevelsDebounce);
     this.map.on('remove', () => {
-      updateLevels.clear();
+      this.remove();
     });
   }
 
