@@ -24,8 +24,8 @@ Discover:
 
 Recommended versions:
 
-- **mapbox-gl** to use is the **1.12** (released in august 2020) or higher
-- **maplibre-gl** **1.15.2**
+*   **mapbox-gl** to use is the **1.12** (released in august 2020) or higher
+*   **maplibre-gl** **1.15.2**
 
 **With NPM**
 
@@ -122,6 +122,7 @@ indoorequal.loadSprite('/indoorequal');
 *   [IndoorEqual](#indoorequal)
     *   [Parameters](#parameters)
     *   [Properties](#properties)
+    *   [remove](#remove)
     *   [on](#on)
         *   [Parameters](#parameters-1)
     *   [off](#off)
@@ -145,7 +146,7 @@ Load the indoor= source and layers in your map.
 
 #### Parameters
 
-*   `map` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the mapbox-gl instance of the map
+*   `map` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the mapbox-gl/maplibre-gl instance of the map
 *   `options` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
 
     *   `options.url` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Override the default tiles URL (<https://tiles.indoorequal.org/>).
@@ -160,6 +161,10 @@ Load the indoor= source and layers in your map.
 *   `levels` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** The levels that can be displayed in the current view
 
 Returns **[IndoorEqual](#indoorequal)** `this`
+
+#### remove
+
+Remove any layers, source and listeners and controls
 
 #### on
 
@@ -269,5 +274,7 @@ Type: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 BSD
 
 [indoor=]: https://indoorequal.org/
+
 [maplibre-gl]: https://github.com/maplibre/maplibre-gl-js
+
 [mapbox-gl]: https://github.com/mapbox/mapbox-gl-js
