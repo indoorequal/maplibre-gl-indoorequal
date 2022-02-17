@@ -116,11 +116,11 @@ export default class IndoorEqual {
     this.events = {};
 
     if (this.map.isStyleLoaded()) {
-      this._addSource();
+      this._init();
       this.setHeatmapVisible(opts.heatmap);
     } else {
       this.map.once('load', () => {
-        this._addSource();
+        this._init();
         this.setHeatmapVisible(opts.heatmap);
       });
     }
@@ -237,7 +237,7 @@ export default class IndoorEqual {
     }
   }
 
-  _addSource() {
+  _init() {
     this.source.addSource();
     this._addLayers();
     this._updateFilters();
