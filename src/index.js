@@ -239,7 +239,7 @@ export default class IndoorEqual {
 
   _init() {
     this.source.addSource();
-    this._addLayers();
+    this.source.addLayers();
     this._updateFilters();
     this._updateLevelsDebounce = debounce(this._updateLevels.bind(this), 1000);
 
@@ -249,10 +249,6 @@ export default class IndoorEqual {
     this.map.on('remove', () => {
       this.remove();
     });
-  }
-
-  _addLayers() {
-    this.source.addLayers();
   }
 
   _updateFilters() {
