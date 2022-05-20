@@ -23,7 +23,7 @@
     "@babel/preset-env": "^7.9.6",
     "@mapbox/spritezero-cli": "https://github.com/francois2metz/spritezero-cli",
     "@rollup/plugin-babel": "^5.0.0",
-    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "babel-jest": "^27.0.6",
     "documentation": "^13.2.5",
