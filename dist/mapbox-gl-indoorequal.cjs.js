@@ -110,7 +110,7 @@ const commonPoi = {
   }
 };
 
-const rank2Class = ["waste_basket", "information", "vending_machine"];
+const rank2Class = ["waste_basket", "information", "vending_machine", "bench", "photo_booth", "ticket_validator"];
 
 const layers = [
   {
@@ -602,11 +602,11 @@ class IndoorEqual {
     this.events = {};
 
     if (this.map.isStyleLoaded()) {
-      this._addSource();
+      this._init();
       this.setHeatmapVisible(opts.heatmap);
     } else {
       this.map.once('load', () => {
-        this._addSource();
+        this._init();
         this.setHeatmapVisible(opts.heatmap);
       });
     }
@@ -723,9 +723,9 @@ class IndoorEqual {
     }
   }
 
-  _addSource() {
+  _init() {
     this.source.addSource();
-    this._addLayers();
+    this.source.addLayers();
     this._updateFilters();
     this._updateLevelsDebounce = debounce__default["default"](this._updateLevels.bind(this), 1000);
 
@@ -735,10 +735,6 @@ class IndoorEqual {
     this.map.on('remove', () => {
       this.remove();
     });
-  }
-
-  _addLayers() {
-    this.source.addLayers();
   }
 
   _updateFilters() {
