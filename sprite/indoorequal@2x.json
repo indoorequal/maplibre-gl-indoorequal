@@ -66,7 +66,7 @@
     "height": 36,
     "pixelRatio": 2,
     "width": 36,
-    "x": 504,
+    "x": 546,
     "y": 0
   },
   "indoorequal-bicycle_parking": {
@@ -185,21 +185,21 @@
     "height": 36,
     "pixelRatio": 2,
     "width": 36,
-    "x": 540,
+    "x": 582,
     "y": 0
   },
   "indoorequal-entrance": {
     "height": 34,
     "pixelRatio": 2,
     "width": 34,
-    "x": 336,
+    "x": 372,
     "y": 42
   },
   "indoorequal-escalator": {
     "height": 36,
     "pixelRatio": 2,
     "width": 36,
-    "x": 576,
+    "x": 618,
     "y": 0
   },
   "indoorequal-exhibit": {
@@ -342,7 +342,7 @@
     "x": 168,
     "y": 210
   },
-  "indoorequal-photos": {
+  "indoorequal-photo_booth": {
     "height": 42,
     "pixelRatio": 2,
     "width": 42,
@@ -444,8 +444,8 @@
     "height": 36,
     "pixelRatio": 2,
     "width": 36,
-    "x": 612,
-    "y": 0
+    "x": 336,
+    "y": 42
   },
   "indoorequal-swimming": {
     "height": 42,
@@ -489,32 +489,39 @@
     "x": 336,
     "y": 0
   },
-  "indoorequal-toilets": {
+  "indoorequal-ticket_validator": {
     "height": 42,
     "pixelRatio": 2,
     "width": 42,
     "x": 378,
     "y": 0
   },
-  "indoorequal-town_hall": {
+  "indoorequal-toilets": {
     "height": 42,
     "pixelRatio": 2,
     "width": 42,
     "x": 420,
     "y": 0
   },
-  "indoorequal-vending_machine": {
+  "indoorequal-town_hall": {
     "height": 42,
     "pixelRatio": 2,
     "width": 42,
     "x": 462,
     "y": 0
   },
+  "indoorequal-vending_machine": {
+    "height": 42,
+    "pixelRatio": 2,
+    "width": 42,
+    "x": 504,
+    "y": 0
+  },
   "indoorequal-waste_basket": {
     "height": 22,
     "pixelRatio": 2,
     "width": 22,
-    "x": 648,
-    "y": 0
+    "x": 406,
+    "y": 42
   }
 }

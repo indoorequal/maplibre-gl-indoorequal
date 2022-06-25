@@ -51,7 +51,7 @@ const commonPoi = {
   }
 };
 
-const rank2Class = ["waste_basket", "information", "vending_machine"];
+const rank2Class = ["waste_basket", "information", "vending_machine", "bench", "photo_booth", "ticket_validator"];
 
 export const layers = [
   {
