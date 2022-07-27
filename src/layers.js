@@ -286,7 +286,12 @@ export const layers = [
       "all"
     ],
     "layout": {
-      "text-field": ["get", "name"],
+      "text-field": [
+        "concat",
+        ["get", "name:latin"],
+        "\n",
+        ["get", "name:nonlatin"],
+      ],
       "text-max-width": 5,
       "text-size": 14
     },
