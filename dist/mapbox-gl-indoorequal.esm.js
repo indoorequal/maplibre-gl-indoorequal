@@ -86,7 +86,12 @@ const commonPoi = {
       ]
     ],
     "text-anchor": "top",
-    "text-field": "{name:latin}\n{name:nonlatin}",
+    "text-field": [
+      "concat",
+      ["get", "name:latin"],
+      "\n",
+      ["get", "name:nonlatin"],
+    ],
     "text-max-width": 9,
     "text-offset": [
       0,
@@ -333,7 +338,12 @@ const layers = [
       "all"
     ],
     "layout": {
-      "text-field": ["get", "name"],
+      "text-field": [
+        "concat",
+        ["get", "name:latin"],
+        "\n",
+        ["get", "name:nonlatin"],
+      ],
       "text-max-width": 5,
       "text-size": 14
     },
