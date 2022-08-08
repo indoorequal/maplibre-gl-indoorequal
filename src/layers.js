@@ -83,7 +83,13 @@ export const layers = [
         ["all", ["has", "access"], ["in", ["get", "access"], ["literal", ["no", "private"]]]],
         "#F2F1F0",
         // if POI
-        ["all", ["==", ["get", "is_poi"], true], ["!=", ["get", "class"], "corridor"]],
+        ["any",
+         ["all", ["==", ["get", "is_poi"], true], ["!=", ["get", "class"], "corridor"]],
+         [
+           "in",
+           ["get", "subclass"],
+           ["literal", ["class", "laboratory", "office", "auditorium", "amphitheatre", "reception"]]]
+        ],
         "#D4EDFF",
         // if is a room
         ["==", ["get", "class"], "room"],
