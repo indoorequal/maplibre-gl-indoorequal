@@ -340,7 +340,10 @@ const layers = [
     "layout": {
       "text-field": [
         "concat",
-        ["get", "name:latin"],
+        ["coalesce",
+         ["get", "name:latin"],
+         ["get", "ref"],
+        ],
         "\n",
         ["get", "name:nonlatin"],
       ],
