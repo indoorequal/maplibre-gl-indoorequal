@@ -21,7 +21,7 @@
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
-    "@mapbox/spritezero-cli": "https://github.com/francois2metz/spritezero-cli",
+    "@indoorequal/spritezero-cli": "^3.0.0",
     "@rollup/plugin-babel": "^5.0.0",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
