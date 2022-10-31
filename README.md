@@ -43,15 +43,15 @@ Recommended versions:
 Get your free key at [indoorequal.com](https://indoorequal.com).
 
 ```javascript
-import mapboxgl from 'mapbox-gl';
+import maplibregl from 'maplibre-gl';
 import IndoorEqual from 'mapbox-gl-indoorequal';
 import 'mapbox-gl-indoorequal/mapbox-gl-indoorequal.css';
 
 mapboxgl.accessToken = '<your-token>';
 
-const map = new mapboxgl.Map({
+const map = new maplibregl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/light-v10',
+  style: 'https://demotiles.maplibre.org/style.json',
   center: [2.3601072, 48.876853],
   zoom: 18
 });
