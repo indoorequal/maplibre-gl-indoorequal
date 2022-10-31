@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <title>Map with indoor=</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <script src='https://unpkg.com/maplibre-gl@v2.4.0/dist/maplibre-gl.js'></script>
     <script src="./dist/mapbox-gl-indoorequal.umd.min.js"></script>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css" rel="stylesheet" />
+    <link href='https://unpkg.com/maplibre-gl@v2.4.0/dist/maplibre-gl.css' rel='stylesheet' />
     <link href="./mapbox-gl-indoorequal.css" rel="stylesheet" />
     <style>
       body { margin: 0; padding: 0; }
@@ -17,7 +17,7 @@
     <div id="map"></div>
 
     <script>
-      const map = new mapboxgl.Map({
+      const map = new maplibregl.Map({
         container: 'map',
         style: 'https://api.maptiler.com/maps/bright/style.json?key=VrW8CutulGiQjLjqWlNM',
         center: [2.3601072, 48.876853],
