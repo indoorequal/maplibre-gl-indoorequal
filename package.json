@@ -35,5 +35,6 @@
   "dependencies": {
     "array-equal": "^1.0.0",
     "debounce": "^1.2.0"
-  }
+  },
+  "packageManager": "yarn@3.6.0"
 }
