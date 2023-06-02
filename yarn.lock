@@ -3709,9 +3709,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"documentation@npm:^14.0.0":
-  version: 14.0.0
-  resolution: "documentation@npm:14.0.0"
+"documentation@npm:^14.0.2":
+  version: 14.0.2
+  resolution: "documentation@npm:14.0.2"
   dependencies:
     "@babel/core": ^7.18.10
     "@babel/generator": ^7.18.10
@@ -3723,7 +3723,7 @@ __metadata:
     chokidar: ^3.5.3
     diff: ^5.1.0
     doctrine-temporary-fork: 2.1.0
-    git-url-parse: ^12.0.0
+    git-url-parse: ^13.1.0
     github-slugger: 1.4.0
     glob: ^8.0.3
     globals-docs: ^2.4.1
@@ -3759,7 +3759,7 @@ __metadata:
       optional: true
   bin:
     documentation: bin/documentation.js
-  checksum: 5c77e4d36997146c68b5fe9cc7dbabdc2eda8eed39925eeff702605fa8952003cf48a83a34abf8b596adf6c54ee831f22f50d5c3f64ee64f7674db640749cecd
+  checksum: fa6734ce55d3bc6397c900e8093044ba1a411949478dc46342e99f765422724e181d47d4cbcbf979aeb46add99174b995da985d705c8e432d9f9acd0e97116d5
   languageName: node
   linkType: hard
 
@@ -4186,22 +4186,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"git-up@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "git-up@npm:6.0.0"
+"git-up@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "git-up@npm:7.0.0"
   dependencies:
     is-ssh: ^1.4.0
-    parse-url: ^7.0.2
-  checksum: 145a1f546d7a078cdfc2616556e518e634d134e34a31c6bf2ed89e44158659cb525dbd451c338121f7107f55cef066d0b37a7bbf178555befc9304b3940b435e
+    parse-url: ^8.1.0
+  checksum: 2faadbab51e94d2ffb220e426e950087cc02c15d664e673bd5d1f734cfa8196fed8b19493f7bf28fe216d087d10e22a7fd9b63687e0ba7d24f0ddcfb0a266d6e
   languageName: node
   linkType: hard
 
-"git-url-parse@npm:^12.0.0":
-  version: 12.0.0
-  resolution: "git-url-parse@npm:12.0.0"
+"git-url-parse@npm:^13.1.0":
+  version: 13.1.0
+  resolution: "git-url-parse@npm:13.1.0"
   dependencies:
-    git-up: ^6.0.0
-  checksum: b4c8530b816202ecf9d4dabf755f785a314a096b56145018385b3d7171e862f9d0d9b38cce620c0af354b269750fe7b2d9aa95815c7150922090a11dac4ab1e6
+    git-up: ^7.0.0
+  checksum: 212a9b0343e9199998b6a532efe2014476a7a1283af393663ca49ac28d4768929aad16d3322e2685236065ee394dbc93e7aa63a48956531e984c56d8b5edb54d
   languageName: node
   linkType: hard
 
@@ -5534,7 +5534,7 @@ __metadata:
     array-equal: ^1.0.0
     babel-jest: ^29.5.0
     debounce: ^1.2.0
-    documentation: ^14.0.0
+    documentation: ^14.0.2
     jest: ^29.5.0
     jest-environment-jsdom: ^29.5.0
     rollup: ^3.23.0
@@ -6408,13 +6408,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"normalize-url@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "normalize-url@npm:6.1.0"
-  checksum: 4a4944631173e7d521d6b80e4c85ccaeceb2870f315584fa30121f505a6dfd86439c5e3fdd8cd9e0e291290c41d0c3599f0cb12ab356722ed242584c30348e50
-  languageName: node
-  linkType: hard
-
 "npm-run-path@npm:^4.0.1":
   version: 4.0.1
   resolution: "npm-run-path@npm:4.0.1"
@@ -6587,24 +6580,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"parse-path@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "parse-path@npm:5.0.0"
+"parse-path@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "parse-path@npm:7.0.0"
   dependencies:
     protocols: ^2.0.0
-  checksum: e9f670559cd8e535f39f548bf5d41ad96a220190ea98df33d0babd9dfaa7c3c70ee2e55394078517d5e7e93c6a39c8eac1261ed3f9e68033656614fc954262e8
+  checksum: 244b46523a58181d251dda9b888efde35d8afb957436598d948852f416d8c76ddb4f2010f9fc94218b4be3e5c0f716aa0d2026194a781e3b8981924142009302
   languageName: node
   linkType: hard
 
-"parse-url@npm:^7.0.2":
-  version: 7.0.2
-  resolution: "parse-url@npm:7.0.2"
+"parse-url@npm:^8.1.0":
+  version: 8.1.0
+  resolution: "parse-url@npm:8.1.0"
   dependencies:
-    is-ssh: ^1.4.0
-    normalize-url: ^6.1.0
-    parse-path: ^5.0.0
-    protocols: ^2.0.1
-  checksum: 3e26852706bebe9fac409909316716dee52883d2fb5c82d65577effba1507abb7bc42bb59ce0ba6c8659168fb99acf89000bd8fe096ed3ad7124fa85227436d7
+    parse-path: ^7.0.0
+  checksum: b93e21ab4c93c7d7317df23507b41be7697694d4c94f49ed5c8d6288b01cba328fcef5ba388e147948eac20453dee0df9a67ab2012415189fff85973bdffe8d9
   languageName: node
   linkType: hard
 
