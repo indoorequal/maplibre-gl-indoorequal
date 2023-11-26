@@ -30,7 +30,7 @@
     "documentation": "^14.0.2",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "rollup": "^3.29.4"
+    "rollup": "^4.5.2"
   },
   "dependencies": {
     "array-equal": "^1.0.2",
