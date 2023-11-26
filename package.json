@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "array-equal": "^1.0.2",
-    "debounce": "^1.2.0"
+    "debounce": "^2.0.0"
   },
   "packageManager": "yarn@3.6.0"
 }
