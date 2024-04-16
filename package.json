@@ -36,5 +36,5 @@
     "array-equal": "^1.0.2",
     "debounce": "^2.0.0"
   },
-  "packageManager": "yarn@3.8.1"
+  "packageManager": "yarn@4.1.1"
 }
