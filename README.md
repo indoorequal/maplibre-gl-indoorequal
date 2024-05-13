@@ -47,8 +47,6 @@ import maplibregl from 'maplibre-gl';
 import IndoorEqual from 'mapbox-gl-indoorequal';
 import 'mapbox-gl-indoorequal/mapbox-gl-indoorequal.css';
 
-mapboxgl.accessToken = '<your-token>';
-
 const map = new maplibregl.Map({
   container: 'map',
   style: 'https://demotiles.maplibre.org/style.json',
