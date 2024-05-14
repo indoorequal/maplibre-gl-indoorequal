@@ -91,12 +91,12 @@ class VectorTileSource {
 
 /**
  * Load the indoor= source and layers in your map.
- * @param {object} map the mapbox-gl/maplibre-gl instance of the map
+ * @param {object} map the maplibre-gl instance of the map
  * @param {object} options
  * @param {string} [options.url] Override the default tiles URL (https://tiles.indoorequal.org/).
  * @param {object} [options.geojson] GeoJSON data with with key as layer name and value with geojson features
  * @param {string} [options.apiKey] The API key if you use the default tile URL (get your free key at [indoorequal.com](https://indoorequal.com)).
- * @param {array} [options.layers] The layers to be used to style indoor= tiles. Take a look a the [layers.js file](https://github.com/indoorequal/mapbox-gl-indoorequal/blob/master/src/layers.js) file and the [vector schema](https://indoorequal.com/schema)
+ * @param {array} [options.layers] The layers to be used to style indoor= tiles. Take a look a the [layers.js file](https://github.com/indoorequal/maplibre-gl-indoorequal/blob/master/src/layers.js) file and the [vector schema](https://indoorequal.com/schema)
  * @param {boolean} [options.heatmap] Should the heatmap layer be visible at start (true : visible, false : hidden). Defaults to true/visible.
  * @property {string} level The current level displayed
  * @property {array} levels  The levels that can be displayed in the current view

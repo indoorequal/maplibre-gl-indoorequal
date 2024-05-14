@@ -1,6 +1,6 @@
-# mapbox-gl-indoorequal ![build](https://img.shields.io/github/actions/workflow/status/indoorequal/mapbox-gl-indoorequal/ci.yml?branch=master) [![npm](https://img.shields.io/npm/v/mapbox-gl-indoorequal)](https://www.npmjs.com/package/mapbox-gl-indoorequal)
+# maplibre-gl-indoorequal ![build](https://img.shields.io/github/actions/workflow/status/indoorequal/maplibre-gl-indoorequal/ci.yml?branch=master) [![npm](https://img.shields.io/npm/v/maplibre-gl-indoorequal)](https://www.npmjs.com/package/maplibre-gl-indoorequal)
 
-mapbox-gl-indoorequal is a [maplibre-gl][] or [mapbox-gl.js][mapbox-gl] plugin to display indoor data from [indoor=][].
+maplibre-gl-indoorequal is a [maplibre-gl][] plugin to display indoor data from [indoor=][].
 
 It provides:
 
@@ -11,7 +11,7 @@ It provides:
 *   a level control to change the level displayed on the map
 *   a programatic API to list the levels available and set the level displayed
 
-[**See the demo**](https://indoorequal.github.io/mapbox-gl-indoorequal).
+[**See the demo**](https://indoorequal.github.io/maplibre-gl-indoorequal).
 
 ![](./demo.gif)
 
@@ -24,18 +24,17 @@ Discover:
 
 Recommended versions:
 
-*   **mapbox-gl** to use is the **1.12** (released in august 2020) or higher
-*   **maplibre-gl** **1.15.2**
+*   **maplibre-gl** **1.15.2** or newer
 
 **With NPM**
 
-    npm install --save mapbox-gl-indoorequal
+    npm install --save maplibre-gl-indoorequal
 
 **In the browser**
 
 ```html
-<script src="https://unpkg.com/mapbox-gl-indoorequal@latest/dist/mapbox-gl-indoorequal.umd.min.js"></script>
-<link href="https://unpkg.com/mapbox-gl-indoorequal@latest/mapbox-gl-indoorequal.css" rel="stylesheet" />
+<script src="https://unpkg.com/maplibre-gl-indoorequal@latest/dist/maplibre-gl-indoorequal.umd.min.js"></script>
+<link href="https://unpkg.com/maplibre-gl-indoorequal@latest/maplibre-gl-indoorequal.css" rel="stylesheet" />
 ```
 
 ## Example
@@ -44,8 +43,8 @@ Get your free key at [indoorequal.com](https://indoorequal.com).
 
 ```javascript
 import maplibregl from 'maplibre-gl';
-import IndoorEqual from 'mapbox-gl-indoorequal';
-import 'mapbox-gl-indoorequal/mapbox-gl-indoorequal.css';
+import IndoorEqual from maplibre-gl-indoorequal';
+import 'maplibre-gl-indoorequal/maplibre-gl-indoorequal.css';
 
 const map = new maplibregl.Map({
   container: 'map',
@@ -61,7 +60,7 @@ map.addControl(indoorEqual);
 ## Loading the default sprite
 
 The default style make uses of a sprite that has to be loaded manually
-as [mapbox-gl][] require an absolute path. The sprite is already builded
+as [maplibre-gl][] require an absolute path. The sprite is already builded
 and available in the `sprite` directory.
 
 To load the sprite, use the `loadSprite` method with the absolute path
@@ -74,7 +73,7 @@ Install the
 package and add to your `package.json`:
 
     "staticFiles": {
-      "staticPath": "node_modules/mapbox-gl-indoorequal/sprite"
+      "staticPath": "node_modules/maplibre-gl-indoorequal/sprite"
     },
 
 Then load the sprite:
@@ -97,7 +96,7 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: 'node_modules/mapbox-gl-indoorequal/sprite' },
+        { from: 'node_modules/maplibre-gl-indoorequal/sprite' },
       ],
     }),
   ],
@@ -274,5 +273,3 @@ BSD
 [indoor=]: https://indoorequal.org/
 
 [maplibre-gl]: https://github.com/maplibre/maplibre-gl-js
-
-[mapbox-gl]: https://github.com/mapbox/mapbox-gl-js

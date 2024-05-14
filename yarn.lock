@@ -5167,9 +5167,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mapbox-gl-indoorequal@workspace:.":
+"maplibre-gl-indoorequal@workspace:.":
   version: 0.0.0-use.local
-  resolution: "mapbox-gl-indoorequal@workspace:."
+  resolution: "maplibre-gl-indoorequal@workspace:."
   dependencies:
     "@babel/core": "npm:^7.24.4"
     "@babel/preset-env": "npm:^7.24.4"

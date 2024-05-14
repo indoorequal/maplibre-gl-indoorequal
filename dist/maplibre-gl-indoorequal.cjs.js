@@ -3,11 +3,6 @@
 var debounce = require('debounce');
 var arrayEqual = require('array-equal');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
-
-var debounce__default = /*#__PURE__*/_interopDefaultLegacy(debounce);
-var arrayEqual__default = /*#__PURE__*/_interopDefaultLegacy(arrayEqual);
-
 function findAllLevels(features) {
   const levels = [];
   for (let i = 0; i < features.length; i++) {
@@ -31,7 +26,7 @@ class LevelControl {
     this.indoorequal.on('levelchange', this._cbRefresh);
 
     this.$el = document.createElement('div');
-    this.$el.classList.add('mapboxgl-ctrl', 'mapboxgl-ctrl-group', 'mapboxgl-ctrl-indoorequal');
+    this.$el.classList.add('maplibre-ctrl', 'maplibre-ctrl-group', 'maplibre-ctrl-indoorequal');
     this._refresh();
   }
 
@@ -49,7 +44,7 @@ class LevelControl {
       strong.textContent = level;
       button.appendChild(strong);
       if (level == this.indoorequal.level) {
-        button.classList.add('mapboxgl-ctrl-active');
+        button.classList.add('maplibre-ctrl-active');
       }
       button.addEventListener('click', () => {  this.indoorequal.setLevel(level); });
       this.$el.appendChild(button);
@@ -596,12 +591,12 @@ class VectorTileSource {
 
 /**
  * Load the indoor= source and layers in your map.
- * @param {object} map the mapbox-gl/maplibre-gl instance of the map
+ * @param {object} map the maplibre-gl instance of the map
  * @param {object} options
  * @param {string} [options.url] Override the default tiles URL (https://tiles.indoorequal.org/).
  * @param {object} [options.geojson] GeoJSON data with with key as layer name and value with geojson features
  * @param {string} [options.apiKey] The API key if you use the default tile URL (get your free key at [indoorequal.com](https://indoorequal.com)).
- * @param {array} [options.layers] The layers to be used to style indoor= tiles. Take a look a the [layers.js file](https://github.com/indoorequal/mapbox-gl-indoorequal/blob/master/src/layers.js) file and the [vector schema](https://indoorequal.com/schema)
+ * @param {array} [options.layers] The layers to be used to style indoor= tiles. Take a look a the [layers.js file](https://github.com/indoorequal/maplibre-gl-indoorequal/blob/master/src/layers.js) file and the [vector schema](https://indoorequal.com/schema)
  * @param {boolean} [options.heatmap] Should the heatmap layer be visible at start (true : visible, false : hidden). Defaults to true/visible.
  * @property {string} level The current level displayed
  * @property {array} levels  The levels that can be displayed in the current view
@@ -746,7 +741,7 @@ class IndoorEqual {
     this.source.addSource();
     this.source.addLayers();
     this._updateFilters();
-    this._updateLevelsDebounce = debounce__default["default"](this._updateLevels.bind(this), 1000);
+    this._updateLevelsDebounce = debounce(this._updateLevels.bind(this), 1000);
 
     this.map.on('load', this._updateLevelsDebounce);
     this.map.on('data', this._updateLevelsDebounce);
@@ -774,7 +769,7 @@ class IndoorEqual {
     if (this.map.isSourceLoaded(this.source.sourceId)) {
       const features = this.map.querySourceFeatures(this.source.sourceId, { sourceLayer: 'area' });
       const levels = findAllLevels(features);
-      if (!arrayEqual__default["default"](levels, this.levels)) {
+      if (!arrayEqual(levels, this.levels)) {
         this.levels = levels;
         this._emitLevelsChange();
         this._refreshAfterLevelsUpdate();

@@ -17,9 +17,9 @@ describe('LevelControl', () => {
   it('create a container', () => {
     const control = new LevelControl(indoorEqual);
     expect(control.$el).not.toBe(null);
-    expect(control.$el.classList.contains('mapboxgl-ctrl')).toBe(true);
-    expect(control.$el.classList.contains('mapboxgl-ctrl-group')).toBe(true);
-    expect(control.$el.classList.contains('mapboxgl-ctrl-indoorequal')).toBe(true);
+    expect(control.$el.classList.contains('maplibre-ctrl')).toBe(true);
+    expect(control.$el.classList.contains('maplibre-ctrl-group')).toBe(true);
+    expect(control.$el.classList.contains('maplibre-ctrl-indoorequal')).toBe(true);
   });
 
   it('render the levels as button', () => {
@@ -27,8 +27,8 @@ describe('LevelControl', () => {
     indoorEqual.levels = levels;
     const control = new LevelControl(indoorEqual);
     expect(control.$el.querySelectorAll('button').length).toEqual(2);
-    expect(control.$el.querySelectorAll('button.mapboxgl-ctrl-active').length).toEqual(1);
-    expect(control.$el.querySelector('button.mapboxgl-ctrl-active').textContent).toEqual('0');
+    expect(control.$el.querySelectorAll('button.maplibre-ctrl-active').length).toEqual(1);
+    expect(control.$el.querySelector('button.maplibre-ctrl-active').textContent).toEqual('0');
   });
 
   it('refresh the control when the levels change', () => {
@@ -53,8 +53,8 @@ describe('LevelControl', () => {
     const control = new LevelControl(indoorEqual);
     indoorEqual.level = '1';
     events.levelchange('1');
-    expect(control.$el.querySelectorAll('button.mapboxgl-ctrl-active').length).toEqual(1);
-    expect(control.$el.querySelector('button.mapboxgl-ctrl-active').textContent).toEqual('1');
+    expect(control.$el.querySelectorAll('button.maplibre-ctrl-active').length).toEqual(1);
+    expect(control.$el.querySelector('button.maplibre-ctrl-active').textContent).toEqual('1');
   });
 
   it('remove the container and listener when calling destroy', () => {

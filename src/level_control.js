@@ -6,7 +6,7 @@ export default class LevelControl {
     this.indoorequal.on('levelchange', this._cbRefresh);
 
     this.$el = document.createElement('div');
-    this.$el.classList.add('mapboxgl-ctrl', 'mapboxgl-ctrl-group', 'mapboxgl-ctrl-indoorequal');
+    this.$el.classList.add('maplibre-ctrl', 'maplibre-ctrl-group', 'maplibre-ctrl-indoorequal');
     this._refresh();
   }
 
@@ -24,7 +24,7 @@ export default class LevelControl {
       strong.textContent = level;
       button.appendChild(strong);
       if (level == this.indoorequal.level) {
-        button.classList.add('mapboxgl-ctrl-active');
+        button.classList.add('maplibre-ctrl-active');
       }
       button.addEventListener('click', () => {  this.indoorequal.setLevel(level); })
       this.$el.appendChild(button);
