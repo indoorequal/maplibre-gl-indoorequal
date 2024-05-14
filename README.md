@@ -24,7 +24,7 @@ Discover:
 
 Recommended versions:
 
-*   **maplibre-gl** **1.15.2** or newer
+*   **maplibre-gl** **3.0.0** or newer
 
 **With NPM**
 

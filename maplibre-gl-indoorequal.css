@@ -1,7 +1,7 @@
-.maplibre-ctrl-indoorequal button {
+.maplibregl-ctrl-indoorequal button {
   min-width: 30px;
   width: 100%;
 }
-.maplibre-ctrl-indoorequal .maplibre-ctrl-active {
+.maplibregl-ctrl-indoorequal .maplibregl-ctrl-active {
   background-color: #b7b7b7;
 }
