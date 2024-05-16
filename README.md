@@ -43,7 +43,7 @@ Get your free key at [indoorequal.com](https://indoorequal.com).
 
 ```javascript
 import maplibregl from 'maplibre-gl';
-import IndoorEqual from maplibre-gl-indoorequal';
+import IndoorEqual from 'maplibre-gl-indoorequal';
 import 'maplibre-gl-indoorequal/maplibre-gl-indoorequal.css';
 
 const map = new maplibregl.Map({
