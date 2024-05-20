@@ -805,3 +805,4 @@ class IndoorEqual {
  */
 
 module.exports = IndoorEqual;
+//# sourceMappingURL=maplibre-gl-indoorequal.cjs.js.map
