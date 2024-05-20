@@ -12,7 +12,8 @@ export default [
     output: {
       name: 'IndoorEqual',
       file: pkg.browser,
-      format: 'umd'
+      format: 'umd',
+      sourcemap: true,
     },
     plugins: [
       resolve(),
@@ -26,8 +27,8 @@ export default [
     input,
     external: ['debounce', 'array-equal'],
     output: [
-      { file: pkg.main, format: 'cjs', exports: 'default' },
-      { file: pkg.module, format: 'es' }
+      { file: pkg.main, format: 'cjs', exports: 'default', sourcemap: true },
+      { file: pkg.module, format: 'es', sourcemap: true }
     ]
   }
 ];
