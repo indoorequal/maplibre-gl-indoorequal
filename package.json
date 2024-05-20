@@ -12,6 +12,7 @@
   "repository": "https://github.com/indoorequal/maplibre-gl-indoorequal",
   "author": "François de Metz",
   "license": "BSD",
+  "sideEffects": false,
   "main": "dist/maplibre-gl-indoorequal.cjs.js",
   "module": "dist/maplibre-gl-indoorequal.esm.js",
   "browser": "dist/maplibre-gl-indoorequal.umd.min.js",
