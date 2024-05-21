@@ -629,8 +629,10 @@ class IndoorEqual {
   /**
    * Remove any layers, source and listeners and controls
    */
-  remove() {
-    this.source.remove();
+  remove(fromRemoveEvent) {
+    if (!fromRemoveEvent) {
+      this.source.remove();
+    }
     this._updateLevelsDebounce.clear();
     this.map.off('load', this._updateLevelsDebounce);
     this.map.off('data', this._updateLevelsDebounce);
@@ -747,7 +749,7 @@ class IndoorEqual {
     this.map.on('data', this._updateLevelsDebounce);
     this.map.on('move', this._updateLevelsDebounce);
     this.map.on('remove', () => {
-      this.remove();
+      this.remove(true);
     });
   }
 
