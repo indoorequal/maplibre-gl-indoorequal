@@ -1,6 +1,6 @@
 {
   "name": "maplibre-gl-indoorequal",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Integrate indoor= into your maplibre-gl.js map.",
   "keywords": [
     "maplibre",

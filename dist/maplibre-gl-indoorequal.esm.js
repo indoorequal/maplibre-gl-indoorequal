@@ -87,10 +87,16 @@ const commonPoi = {
     ],
     "text-anchor": "top",
     "text-field": [
-      "concat",
-      ["get", "name:latin"],
-      "\n",
-      ["get", "name:nonlatin"],
+      "case",
+      // aeroway=gate
+      ["==", ["get", "class"], "aeroway"],
+      ["get", "ref"],
+      // default
+      ["concat",
+       ["get", "name:latin"],
+       "\n",
+       ["get", "name:nonlatin"]
+      ],
     ],
     "text-max-width": 9,
     "text-offset": [
