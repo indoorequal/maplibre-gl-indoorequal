@@ -1778,9 +1778,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-commonjs@npm:^26.0.0":
-  version: 26.0.1
-  resolution: "@rollup/plugin-commonjs@npm:26.0.1"
+"@rollup/plugin-commonjs@npm:^27.0.0":
+  version: 27.0.0
+  resolution: "@rollup/plugin-commonjs@npm:27.0.0"
   dependencies:
     "@rollup/pluginutils": "npm:^5.0.1"
     commondir: "npm:^1.0.1"
@@ -1793,7 +1793,7 @@ __metadata:
   peerDependenciesMeta:
     rollup:
       optional: true
-  checksum: 10c0/483290d327bdb4147584c37d73e47df2c717735f1902cd2f66ebc83c7b40ae10e5a8d5e626f24b76ad4ac489eab4a8c13869410aad663810848b0abc89a630cf
+  checksum: 10c0/1ea765dcfcfbac7f79531ee7f6ac0468934f9a313cd07f322091ee540508094833531d1ed14f9f4fa1ecea4c9fa65a57ffc861e5c58ae071146ef74368b2e8f6
   languageName: node
   linkType: hard
 
@@ -5159,7 +5159,7 @@ __metadata:
     "@babel/preset-env": "npm:^7.24.4"
     "@indoorequal/spritezero-cli": "npm:^3.0.0"
     "@rollup/plugin-babel": "npm:^6.0.4"
-    "@rollup/plugin-commonjs": "npm:^26.0.0"
+    "@rollup/plugin-commonjs": "npm:^27.0.0"
     "@rollup/plugin-node-resolve": "npm:^15.2.3"
     "@rollup/plugin-terser": "npm:^0.4.4"
     array-equal: "npm:^1.0.2"
