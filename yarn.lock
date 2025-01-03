@@ -5086,7 +5086,7 @@ __metadata:
     jest-environment-jsdom: "npm:^29.7.0"
     rollup: "npm:^4.14.0"
   peerDependencies:
-    maplibre-gl: ^3.0.0 || ^4.0.0
+    maplibre-gl: ^5.0.0
   languageName: unknown
   linkType: soft
 

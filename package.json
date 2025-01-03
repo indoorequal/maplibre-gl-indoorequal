@@ -45,7 +45,7 @@
     "debounce": "^2.0.0"
   },
   "peerDependencies": {
-    "maplibre-gl": "^3.0.0 || ^4.0.0"
+    "maplibre-gl": "^5.0.0"
   },
   "packageManager": "yarn@4.6.0"
 }
