@@ -1,9 +1,9 @@
+import { jest } from '@jest/globals';
+
 const mockSprite = { 'test': { data: null, pixelRatio: 1 }};
-jest.mock('../src/sprite', () => {
-  return {
-    __esModule: true,
-    default: () => Promise.resolve(mockSprite)
-  };
+
+jest.unstable_mockModule('../src/sprite', () => {
+  return () => Promise.resolve(mockSprite);
 });
 
 import IndoorEqual from '../src/index';
