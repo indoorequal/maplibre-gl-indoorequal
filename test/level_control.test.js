@@ -1,3 +1,4 @@
+import { jest } from '@jest/globals';
 import LevelControl from '../src/level_control';
 
 describe('LevelControl', () => {
