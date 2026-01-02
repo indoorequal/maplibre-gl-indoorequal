@@ -14,7 +14,6 @@ class GeoJSONSource {
     this.layers = opts.layers;
     this.baseSourceId = 'indoorequal';
     this.sourceId = `${this.baseSourceId}_area`;
-    this._loadSprite = loadSprite;
   }
 
   addSource() {
@@ -115,6 +114,7 @@ export default class IndoorEqual {
     this.levels = [];
     this.level = '0';
     this.events = {};
+    this._loadSprite = loadSprite;
 
     if (this.map.isStyleLoaded()) {
       this._init();
