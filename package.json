@@ -13,18 +13,16 @@
   "author": "François de Metz",
   "license": "BSD",
   "sideEffects": false,
+  "type": "module",
   "main": "dist/maplibre-gl-indoorequal.cjs.js",
   "module": "dist/maplibre-gl-indoorequal.esm.js",
   "browser": "dist/maplibre-gl-indoorequal.umd.min.js",
   "scripts": {
     "dev": "rollup --config --watch",
     "build": "rollup --config",
-    "test": "jest",
+    "test": "node --import ./test/setup.js  --test './test/*.test.js'",
     "doc": "documentation readme src/index.js --section=API",
     "sprite": "spritezero ./sprite/indoorequal ./mapicons && spritezero --retina ./sprite/indoorequal@2x ./mapicons"
-  },
-  "jest": {
-    "testEnvironment": "jsdom"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
@@ -34,10 +32,9 @@
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-terser": "^0.4.4",
-    "babel-jest": "^30.0.0",
     "documentation": "^14.0.3",
-    "jest": "^30.0.0",
-    "jest-environment-jsdom": "^30.0.0",
+    "global-jsdom": "^27.0.0",
+    "jsdom": "^27.4.0",
     "rollup": "^4.14.0"
   },
   "dependencies": {

@@ -1,8 +1,11 @@
-import findAllLevels from '../src/levels';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+
+import findAllLevels from '../src/levels.js';
 
 describe('findAllLevels', () => {
   it('find one level', () => {
-    expect(findAllLevels([
+    assert.deepEqual(findAllLevels([
       {
         properties: {
           level: 0
@@ -13,11 +16,11 @@ describe('findAllLevels', () => {
           level: 0
         }
       }
-    ])).toEqual([0]);
+    ]), [0]);
   });
 
   it('find multiple levels', () => {
-    expect(findAllLevels([
+    assert.deepEqual(findAllLevels([
       {
         properties: {
           level: 0
@@ -28,11 +31,11 @@ describe('findAllLevels', () => {
           level: 1
         }
       }
-    ])).toEqual([1, 0]);
+    ]), [1, 0]);
   });
 
   it('sort levels', () => {
-    expect(findAllLevels([
+    assert.deepEqual(findAllLevels([
       {
         properties: {
           level: 1
@@ -43,11 +46,11 @@ describe('findAllLevels', () => {
           level: 0
         }
       }
-    ])).toEqual([1, 0]);
+    ]), [1, 0]);
   });
 
    it('sort levels with minus', () => {
-    expect(findAllLevels([
+    assert.deepEqual(findAllLevels([
       {
         properties: {
           level: 1
@@ -68,11 +71,11 @@ describe('findAllLevels', () => {
           level: 0
         }
       }
-    ])).toEqual([1, 0, -1, -2]);
+    ]), [1, 0, -1, -2]);
   });
 
   it('ignore levels from indoor=level', () => {
-    expect(findAllLevels([
+    assert.deepEqual(findAllLevels([
       {
         properties: {
           level: 0
@@ -84,10 +87,10 @@ describe('findAllLevels', () => {
           level: 1
         }
       }
-    ])).toEqual([0]);
+    ]), [0]);
   });
 
   it('find zero levels', () => {
-    expect(findAllLevels([])).toEqual([]);
+    assert.deepEqual(findAllLevels([]), []);
   });
 });

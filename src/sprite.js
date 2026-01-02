@@ -1,4 +1,4 @@
-import {RGBAImage} from './image';
+import {RGBAImage} from './image.js';
 
 function getImageData(img, padding) {
   const canvas = window.document.createElement('canvas');

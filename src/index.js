@@ -1,9 +1,9 @@
 import debounce from 'debounce';
 import arrayEqual from 'array-equal';
-import findAllLevels from './levels';
-import LevelControl from './level_control';
-import { layers } from './layers';
-import loadSprite from './sprite';
+import findAllLevels from './levels.js';
+import LevelControl from './level_control.js';
+import { layers } from './layers.js';
+import loadSprite from './sprite.js';
 
 class GeoJSONSource {
   constructor(map, options = {}) {
@@ -14,6 +14,7 @@ class GeoJSONSource {
     this.layers = opts.layers;
     this.baseSourceId = 'indoorequal';
     this.sourceId = `${this.baseSourceId}_area`;
+    this._loadSprite = loadSprite;
   }
 
   addSource() {
@@ -215,7 +216,7 @@ export default class IndoorEqual {
    */
   loadSprite(baseUrl, options = {}) {
     const opts = { update: false, ...options };
-    return loadSprite(baseUrl)
+    return this._loadSprite(baseUrl)
       .then((sprite) => {
         for (const id in sprite) {
           const { data, ...options } = sprite[id];
