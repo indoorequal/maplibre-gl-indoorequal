@@ -620,6 +620,7 @@ class IndoorEqual {
     this.levels = [];
     this.level = '0';
     this.events = {};
+    this._loadSprite = loadSprite;
 
     if (this.map.isStyleLoaded()) {
       this._init();
@@ -721,7 +722,7 @@ class IndoorEqual {
    */
   loadSprite(baseUrl, options = {}) {
     const opts = { update: false, ...options };
-    return loadSprite(baseUrl)
+    return this._loadSprite(baseUrl)
       .then((sprite) => {
         for (const id in sprite) {
           const { data, ...options } = sprite[id];
