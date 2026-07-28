@@ -32,6 +32,11 @@ Recommended versions:
 
 **In the browser**
 
+maplibre-gl 6 is distributed as ESM only and no longer publishes a UMD bundle, so with
+maplibre-gl 6 install both packages from NPM and use a bundler.
+
+With maplibre-gl 5 or older, the UMD bundle can still be loaded directly:
+
 ```html
 <script src="https://unpkg.com/maplibre-gl-indoorequal@latest/dist/maplibre-gl-indoorequal.umd.min.js"></script>
 <link href="https://unpkg.com/maplibre-gl-indoorequal@latest/maplibre-gl-indoorequal.css" rel="stylesheet" />
@@ -42,7 +47,8 @@ Recommended versions:
 Get your free key at [indoorequal.com](https://indoorequal.com).
 
 ```javascript
-import maplibregl from 'maplibre-gl';
+// maplibre-gl 6 dropped its default export, use a namespace import
+import * as maplibregl from 'maplibre-gl';
 import IndoorEqual from 'maplibre-gl-indoorequal';
 import 'maplibre-gl-indoorequal/maplibre-gl-indoorequal.css';
 
