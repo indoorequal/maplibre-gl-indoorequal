@@ -24,7 +24,7 @@ Discover:
 
 Recommended versions:
 
-*   **maplibre-gl** **3.0.0** or newer
+*   **maplibre-gl** **6.0.0** or newer
 
 **With NPM**
 
@@ -42,11 +42,11 @@ Recommended versions:
 Get your free key at [indoorequal.com](https://indoorequal.com).
 
 ```javascript
-import maplibregl from 'maplibre-gl';
+import { Map } from 'maplibre-gl';
 import IndoorEqual from 'maplibre-gl-indoorequal';
 import 'maplibre-gl-indoorequal/maplibre-gl-indoorequal.css';
 
-const map = new maplibregl.Map({
+const map = new Map({
   container: 'map',
   style: 'https://demotiles.maplibre.org/style.json',
   center: [2.3601072, 48.876853],
