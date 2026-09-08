@@ -2913,12 +2913,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"global-jsdom@npm:^29.0.0":
-  version: 29.0.0
-  resolution: "global-jsdom@npm:29.0.0"
+"global-jsdom@npm:^30.0.0":
+  version: 30.0.0
+  resolution: "global-jsdom@npm:30.0.0"
   peerDependencies:
-    jsdom: ">=29 <30"
-  checksum: 10c0/afc66cd3038211ca1e40cbb07218e084faf213a6bad4e70b9025137aeb9e7d8d52ad50a0632bdaaf3696b9a133a6ee62454a22a26ad951af740d0c61be467f31
+    jsdom: ">=30 <31"
+  checksum: 10c0/9be170e942de8140c3b07bb0e4be1cd60905fcb1c3f6ab91ef87fc0dad1c0b175d070e9e8d1a476aba1dda015aa8e87670a4f8b13058cc74c9bcc456b65f5f11
   languageName: node
   linkType: hard
 
@@ -3534,7 +3534,7 @@ __metadata:
     array-equal: "npm:^2.0.0"
     debounce: "npm:^3.0.0"
     documentation: "npm:^14.0.3"
-    global-jsdom: "npm:^29.0.0"
+    global-jsdom: "npm:^30.0.0"
     jsdom: "npm:^30.0.0"
     rollup: "npm:^4.14.0"
   peerDependencies:
