@@ -57,6 +57,12 @@ const indoorEqual = new IndoorEqual(map, { apiKey: 'mykey' });
 map.addControl(indoorEqual);
 ```
 
+## Customizing the style
+
+The default style is defined in [`src/layers.js`](src/layers.js) and can be replaced with the
+`layers` option. See [STYLING.md](STYLING.md) for the source layers, fields and values
+available in the indoor= tiles.
+
 ## Loading the default sprite
 
 The default style make uses of a sprite that has to be loaded manually
