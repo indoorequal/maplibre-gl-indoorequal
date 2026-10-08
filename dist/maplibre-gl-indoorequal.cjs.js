@@ -615,6 +615,7 @@ class IndoorEqual {
     const SourceKlass = options.geojson ? GeoJSONSource : VectorTileSource;
     const defaultOpts = { heatmap: true };
     const opts = { ...defaultOpts, ...options };
+    let initialized = false;
     this.source = new SourceKlass(map, options);
     this.map = map;
     this.levels = [];
@@ -622,14 +623,18 @@ class IndoorEqual {
     this.events = {};
     this._loadSprite = loadSprite;
 
-    if (this.map.isStyleLoaded()) {
+    this.map.on('style.load', () => {
+      if (initialized) {
+        this.remove(true);
+      }
+      initialized = true;
       this._init();
       this.setHeatmapVisible(opts.heatmap);
-    } else {
-      this.map.once('load', () => {
-        this._init();
-        this.setHeatmapVisible(opts.heatmap);
-      });
+    });
+    if (this.map.isStyleLoaded()) {
+      initialized = true;
+      this._init();
+      this.setHeatmapVisible(opts.heatmap);
     }
   }
 
@@ -641,7 +646,7 @@ class IndoorEqual {
       this.source.remove();
     }
     this._updateLevelsDebounce.clear();
-    this.map.off('load', this._updateLevelsDebounce);
+    this.map.off('style.load', this._updateLevelsDebounce);
     this.map.off('data', this._updateLevelsDebounce);
     this.map.off('move', this._updateLevelsDebounce);
     if (this._control) {
