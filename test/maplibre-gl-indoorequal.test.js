@@ -16,7 +16,6 @@ describe('IndoorEqual', () => {
   beforeEach(() => {
     map = {};
     on = {};
-    once = {};
     addSource = mock.fn();
     addLayer = mock.fn();
     getLayer = mock.fn();
@@ -28,7 +27,6 @@ describe('IndoorEqual', () => {
     map.setFilter = setFilter;
     map.setLayoutProperty = setLayoutProperty;
     map.on = (name, fn) => { on[name] = fn};
-    map.once = (name, fn) => { once[name] = fn};
     map.isStyleLoaded = () => false;
   });
 
@@ -69,8 +67,8 @@ describe('IndoorEqual', () => {
     const indoorEqual = new IndoorEqual(map, { apiKey: 'myapikey' });
     assert.equal(addSource.mock.calls.length, 0);
     assert.equal(addLayer.mock.calls.length, 0);
-    assert.equal(setFilter.mock.calls.length, 0)
-    once.load();
+    assert.equal(setFilter.mock.calls.length, 0);
+    on['style.load']();
     assert.equal(addSource.mock.calls.length, 1);
     assert.equal(addLayer.mock.calls.length, 10);
     assert.equal(setFilter.mock.calls.length, 9);
