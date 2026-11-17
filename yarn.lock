@@ -2287,10 +2287,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debounce@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "debounce@npm:3.0.0"
-  checksum: 10c0/bfae14dbdd98c57f2ed6e3f91f8086fe5a64624ddf54d0a55e038069ae47aa90ba305be98c29199b611955bbf9c3309bf07caf7f1ab55fe90928396fb9318c5a
+"debounce@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "debounce@npm:4.0.0"
+  checksum: 10c0/e0e8608243f0aa6d880073897b7ef5a19a5dad8ff057ee43decc6e3acde24f5352b362a74f2de94d4ca11045831d5e1e0a8a08490a908968d7a41dcd680b6389
   languageName: node
   linkType: hard
 
@@ -3475,7 +3475,7 @@ __metadata:
     "@rollup/plugin-node-resolve": "npm:^16.0.0"
     "@rollup/plugin-terser": "npm:^1.0.0"
     array-equal: "npm:^2.0.0"
-    debounce: "npm:^3.0.0"
+    debounce: "npm:^4.0.0"
     documentation: "npm:^14.0.3"
     global-jsdom: "npm:^31.0.0"
     jsdom: "npm:^31.0.0"
